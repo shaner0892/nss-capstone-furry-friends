@@ -12,7 +12,7 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/all-dogs">All Dogs</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/user-profile">My Profile</Link>
+                <Link className="navbar__link" to={`/user-profile/${parseInt(localStorage.getItem("furry-user"))}`}> My Profile </Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="#"

@@ -24,11 +24,13 @@ export const DogList = () => {
             {/* //iterate dogs and convert them from objects to html using jsx
             //use map array method conversion tool 
             //need to display an abbreviated bio (name, age, adoptable) 
-            //also need to display their picture */}
+            //also need to display their picture 
+            //use dynamic routing to create a link on each dog's name to access their individual profile*/}
+            
             {
                 dogs.map(
                     (dog) => {
-                        return <p key={`dog--${dog.id}`}> <Link to="/">{dog.name} </Link> <br></br>{dog.age} years old <br></br>{dog.adoptable? "Available for adoption!" : "Already adopted"}</p>
+                        return <p key={`dog--${dog.id}`}> <Link to={`/all-dogs/${dog.id}`}>{dog.name} </Link> <br></br>{dog.age} years old <br></br>{dog.adoptable? "Available for adoption!" : "Already adopted"}</p>
                     }
                 )
             }

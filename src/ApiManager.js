@@ -6,7 +6,7 @@ export const getAllUsers = () => {
 }
 
 export const getAllDogs = () => {
-    return fetch("http://localhost:8088/dogs?_expand=user&_expand=rescue")
+    return fetch("http://localhost:8088/dogs?_expand=user&_expand=rescue&_expand=size")
     .then(res => res.json())
 }
 
