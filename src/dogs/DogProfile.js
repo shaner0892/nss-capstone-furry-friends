@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getAllDogs } from "../ApiManager";
 
 // this module is responsible for displaying the selected dog's individual profile
 
@@ -14,8 +13,8 @@ export const DogProfile = () => {
         () => {
             return fetch(`http://localhost:8088/dogs/${dogId}?_expand=user&_expand=rescue&_expand=size`)
                 .then(res => res.json()) 
-                .then((dogArray) => {
-                    modifyDog(dogArray)
+                .then((dogObj) => {
+                    modifyDog(dogObj)
                 })
         },
         [dogId]
@@ -25,6 +24,7 @@ export const DogProfile = () => {
         // need to display all info: name, age, gender, adoptable, rescue, good with kids/dogs/cats, size, and bio
         // need to display picture(s)
         // need to display how to contact about dog (display rescue/email and user/email)
+        // use a ternary statement to display contact info IF they are adoptable
         <>
         <h2>All about {dog.name}!</h2>
         <section>
@@ -38,6 +38,9 @@ export const DogProfile = () => {
             <div> Good with dogs? {dog.goodWDogs? "Yes" : "No"} </div>
             <div> Good with cats? {dog.goodWCats? "Yes" : "No"} </div>
             <div> Bio: {dog.bio} </div>
+        </section>
+        <section>
+            <div>{dog.adoptable? `To learn more about me you can contact ${dog.rescue?.name} at ${dog.rescue?.email} or my foster, ${dog.user?.firstName} at ${dog.user?.email}` : ""} </div>
         </section>
 
         </>

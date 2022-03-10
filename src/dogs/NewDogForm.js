@@ -1,18 +1,27 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { getAllRescues } from "../ApiManager";
+import { getAllRescues, getAllSizes } from "../ApiManager";
 
 export const AddDog = () => {
     //use the useState hook function to set the initial value of the new object
     const [rescues, modifyRescues] = useState([])
-    
+    const [sizes, modifySizes] = useState([])
     //add useEffect
-    //this is watching for updates to the locations array and fetches them from the API, it updates locations to = the locations array from the API
+    //this is watching for updates to the rescues and sizes array and fetches them from the API, it updates locations to = the locations array from the API
     useEffect(
         () => {
             getAllRescues()
                 .then((rescuesArray) => {
                     modifyRescues(rescuesArray)
+                })
+        },
+        []
+    )
+    useEffect(
+        () => {
+            getAllSizes()
+                .then((sizesArray) => {
+                    modifySizes(sizesArray)
                 })
         },
         []
@@ -34,7 +43,7 @@ export const AddDog = () => {
     //need clarification on this ***************
     const history = useHistory()
 
-    const apply = (evt) => {
+    const addNewDog = (evt) => {
         //capture the evt (event) and prevent the default (form submitted and reset) from happening
         evt.preventDefault()
         //object that we want to send to our API
@@ -63,7 +72,7 @@ export const AddDog = () => {
         }
 
         //fetch the new list of dogs from the API
-        return fetch("http://localhost:8088/dogs?_expand=user&_expand=rescue", fetchOption)
+        return fetch("http://localhost:8088/dogs?_expand=user&_expand=rescue&_expand=size", fetchOption)
             .then(() => {
                 history.push("/dogs")
             })
@@ -92,7 +101,7 @@ export const AddDog = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="gender">Gender </label>
+                    <label htmlFor="gender">Gender: </label>
                         <input type="radio" name="gender" value="Male" onChange={
                             (evt) => {
                                 const copy = {...dog}
@@ -125,6 +134,25 @@ export const AddDog = () => {
                             {/* {rescues.map((rescue) => {
                                 return <option value={}>{}</option>
                             })} */}
+                    </select> 
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="size">Size: </label>
+                    <select name="size" className="form-control"
+                        onChange={
+                            (evt) => {
+                                const copy = {...dog}
+                                copy.sizeId = parseInt(evt.target.value)
+                                updateDog(copy)
+                            }
+                        }
+                    >
+                        <option value="0">Select Size</option>
+                            {sizes.map((size) => {
+                                return <option value={size.id}>{size.type}</option>
+                            })}
                     </select> 
                 </div>
             </fieldset>
@@ -220,12 +248,16 @@ export const AddDog = () => {
                         } />
                 </div>
             </fieldset>
-            <button className="btn btn-picture" onClick={}>
-                Upload a picture
-            </button>
-            <button className="btn btn-addDog" onClick={}>
-                Submit
-            </button>
+            <div>
+                <button className="btn btn-picture" >
+                    Upload a picture
+                </button>
+            </div>
+            <div>
+                <button className="btn btn-addDog" onClick={addNewDog}>
+                    Submit
+                </button>
+            </div>
         </form>
     )
 }

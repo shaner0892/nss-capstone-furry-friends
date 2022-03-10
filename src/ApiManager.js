@@ -14,3 +14,8 @@ export const getAllRescues = () => {
     return fetch("http://localhost:8088/rescues")
     .then(res => res.json())
 }
+
+export const getAllSizes = () => {
+    return fetch("http://localhost:8088/sizes")
+    .then(res => res.json())
+}
