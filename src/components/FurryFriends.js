@@ -14,6 +14,8 @@ export const FurryFriends = () => (
             if (localStorage.getItem("furry_user")) {
                 return (
                 <>
+                    <h1>Nashville Furry Friends </h1>
+                    <h4>Helping foster dogs find their furever homes since 2022</h4>                  
                     <NavBar />
                     <ApplicationViews />
                 </>

@@ -30,7 +30,7 @@ export const DogProfile = () => {
         <section>
             <div> Name: {dog.name} </div>
             <div> Gender: {dog.gender} </div>
-            <div> Age: {dog.age} </div>
+            <div> Age Range: {dog.age} </div>
             <div> Size: {dog.size?.type} </div>
             <div> Adoptable: {dog.adoptable? "Yes" : "No"} </div>
             <div> Rescue: {dog.rescue?.name} </div>

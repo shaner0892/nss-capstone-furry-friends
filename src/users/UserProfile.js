@@ -1,81 +1,76 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { deleteDog, getUserDogs } from "../ApiManager";
 
 //this module is responsible for displaying the user's info and their dogs
 
 export const UserProfile = () => {
     //use useState to define and update user
-    const [user, modifyUser] = useState({})
+    const [user, modifyUser] = useState({dogs:[]})
     //use useParams to implement a single resource view
     const { userId } = useParams()
+    const history = useHistory()
+    
     //use useEffect to monitor for updates to user
     //fetch by id (/user/id)
     //use _embed query string parameter to add dogs to user object
     useEffect(
         () => {
-            return fetch(`http://localhost:8088/users/${parseInt(localStorage.getItem("furry_user"))}?_embed=dogs`)
-                .then(res => res.json())
+            getUserDogs()
                 .then((userObj) => {
                     modifyUser(userObj)
                 })
         },
         [userId]
     )
-    //not working
-    //write a function that iterates through the user and prints each dog with buttons
-    // const eachDog = (user) => {
-    //     for (dog of user) {
-    //         return <section>
-    //             <div>${user.dog?.name}</div>
-    //             <div><button > Edit Dog Profile </button></div>
-    //         </section>
-    //     }
-    // }
+
     //define a function to delete a dog from the user's profile
-    //use DELETE method and then fetch the user's new list of dogs
+    //invoke the DELETE method from ApiManager and then fetch the user's new list of dogs
     const removeDog = (id) => {
-        fetch(`http://localhost:8088/dogs/${id}`, {
-            method: "DELETE"
-        })
-        .then(()=> {
-            return fetch(`http://localhost:8088/users/${parseInt(localStorage.getItem("furry_user"))}?_embed=dogs`)
-                .then(res => res.json())
-                .then((userObj) => {
-                    modifyUser(userObj)
-                })
-        })
+        deleteDog(id)
+            .then(()=> {
+                getUserDogs()
+                    .then((userObj) => {
+                        modifyUser(userObj)
+                    })
+            })
     }
 
     return (
         <>
-            {/* //display user's name and bio 
-            //add an edit button */}
-            <h1>{user.firstName}'s Page</h1>
-            <div>{user.bio}</div>
-            <fieldset>
-                <button > Edit My Profile </button>
-            </fieldset>
+            {/* //display user's name and bio, add an edit button */}
+            <h2>{user.firstName}'s Page</h2>
+            <div>Name: {user.firstName} {user.lastName}</div>
+            <div>Email: {user.email}</div>
+            <div>Bio: {user.bio}</div>
+            <br></br>
+            <button onClick={() => history.push(`/edit-user-profile/${parseInt(localStorage.getItem("furry_user"))}`)}> Edit My Profile </button>
+
+            <h3>My Dogs</h3>
+            {/* use map array method to display each dog for the user 
+            make the name clickable and show the individual profile
+            add an edit and delete button*/}
+            {
+                user.dogs.map(
+                    (dog) => {
+                        return <div>
+                            <Link to={`/all-dogs/${dog.id}`}>
+                                <p key={`dog--${dog.id}`}>{dog.name}</p>
+                            </Link>
+                            <button onClick={() => history.push(`/edit-dog-profile/${dog.id}`)}> Edit Dog Profile </button>
+                            <button onClick={() => {removeDog(dog.id)}}> Delete Dog Profile </button>
+                        </div>
+                    }
+                )
+            }
+            <br></br>
             {/* //display add new dog button, <Link> to take to NewDogForm*/}
-            <fieldset>
+            <div>
                 <Link to="/add-dog">
                     <button > Add New Dog </button>
                 </Link>
-            </fieldset>
-             {/* //display each dog's name with an edit and a delete button
-             //how do I print each dog? iterate through the user with filter? ***********/}
-            <h3>My Dogs</h3>
-            {/* {eachDog(user)} */}
-            {/* <div>{user.dog?.name}</div>*/}
-            <fieldset>
-                <button > Edit Dog Profile </button>
-            </fieldset> 
-            <fieldset>
-                <button onClick={() => {
-                    removeDog(user.dog?.id )
-                }}> Delete Dog Profile </button>
-            </fieldset>
-            
+            </div> 
         </>
     )
 }

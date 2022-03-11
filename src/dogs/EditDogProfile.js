@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllAgeRanges, getAllRescues, getAllSizes } from "../ApiManager";
 
-export const AddDog = () => {
+export const EditDogProfile = () => {
     //use the useState hook function to set the initial value of the new object
     const [rescues, modifyRescues] = useState([])
     const [sizes, modifySizes] = useState([])
     const [ageRanges, modifyAgeRange] = useState([])
+    const history = useHistory()
 
     //add useEffect
     //this is watching for updates to the rescues and sizes array and fetches them from the API, it updates locations to = the locations array from the API
@@ -51,8 +52,6 @@ export const AddDog = () => {
         goodWCats: false,
         sizeId: 0
     });
-    //need clarification on this ***************
-    const history = useHistory()
 
     const addNewDog = (evt) => {
         //capture the evt (event) and prevent the default (form submitted and reset) from happening
@@ -74,7 +73,7 @@ export const AddDog = () => {
 
         //POST the newDog object from above to the API
         const fetchOption = {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -91,11 +90,11 @@ export const AddDog = () => {
     //this will be the form you display, you need to capture user input and save to new object
     return (
         <form className="dogForm">
-            <h2 className="dogForm__title">New Dog Form</h2>
+            <h2 className="dogForm__title">Edit Dog Profile</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name: </label>
-                    <input
+                    <input value={dog.name}
                         required autoFocus
                         type="text"
                         className="form-control"
