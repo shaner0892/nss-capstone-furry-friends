@@ -46,7 +46,7 @@ export const EditUserProfile = (props) => {
             </dialog>
 
             <form className="form--login" onSubmit={editUser}>
-                <h2 className="h3 mb-3 font-weight-normal">Edit Profile</h2>
+                <h2 className="h3 mb-3 font-weight-normal">Edit Your Profile</h2>
                 <fieldset>
                     <label htmlFor="firstName"> First Name: </label>
                     <input value={user.firstName} onChange={updateUser}

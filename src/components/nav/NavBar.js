@@ -14,6 +14,9 @@ export const NavBar = (props) => {
             <li className="navbar__item">
                 <Link className="navbar__link" to={`/user-profile/${parseInt(localStorage.getItem("furry_user"))}`}> My Profile </Link>
             </li>
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/events">Events</Link>
+            </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="#"
                     onClick={

@@ -25,6 +25,11 @@ export const getAllAgeRanges = () => {
         .then(res => res.json())
 }
 
+export const getAllEvents = () => {
+    return fetch("http://localhost:8088/events?_expand=rescue")
+        .then(res => res.json())
+}
+
 export const getUserDogs = () => {
     return fetch(`http://localhost:8088/users/${parseInt(localStorage.getItem("furry_user"))}?_embed=dogs`)
         .then(res => res.json())
@@ -40,3 +45,4 @@ export const getCurrentDog = (id) => {
     return fetch(`http://localhost:8088/dogs/${id}`)
         .then(res => res.json())
 }
+

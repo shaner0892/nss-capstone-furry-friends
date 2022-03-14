@@ -31,7 +31,7 @@ export const Register = (props) => {
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 localStorage.setItem("furry_user", createdUser.id)
-                                history.push("/")
+                                history.push("/all-dogs")
                             }
                         })
                 }
@@ -57,23 +57,23 @@ export const Register = (props) => {
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Please Register for Nashville Furry Friends</h1>
                 <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
+                    <label htmlFor="firstName"> First Name: </label>
                     <input onChange={updateUser}
                         type="text" id="firstName" className="form-control"
                         placeholder="Enter your first name" required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
+                    <label htmlFor="lastName"> Last Name: </label>
                     <input onChange={updateUser}
                         type="text" id="lastName" className="form-control"
                         placeholder="Enter your last name" required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="email"> Email address </label>
+                    <label htmlFor="email"> Email address: </label>
                     <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="bio"> Bio </label>
+                    <label htmlFor="bio"> About me: </label>
                     <input onChange={updateUser} type="text" id="bio" className="form-control" placeholder="Tell us about yourself" />
                 </fieldset>
                 <fieldset>

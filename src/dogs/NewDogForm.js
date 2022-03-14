@@ -16,7 +16,12 @@ export const AddDog = () => {
             .then(user => setUser(user))
     }
 
-    currentUser()
+    useEffect(
+        () => {
+            currentUser()
+        },
+        []
+    )
 
     //add useEffect
     //this is watching for updates to the rescues and sizes array and fetches them from the API, it updates locations to = the locations array from the API

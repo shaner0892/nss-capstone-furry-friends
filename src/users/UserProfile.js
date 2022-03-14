@@ -54,9 +54,9 @@ export const UserProfile = () => {
             {
                 user.dogs.map(
                     (dog) => {
-                        return <div>
+                        return <div key={`dog--${dog.id}`}>
                             <Link to={`/dog-profile/${dog.id}`}>
-                                <p key={`dog--${dog.id}`}>{dog.name}</p>
+                                <p>{dog.name}</p>
                             </Link>
                             <button onClick={() => history.push(`/edit-dog-profile/${dog.id}`)}> Edit Dog Profile </button>
                             <button onClick={() => {removeDog(dog.id)}}> Delete Dog Profile </button>

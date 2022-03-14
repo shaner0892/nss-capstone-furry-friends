@@ -90,7 +90,7 @@ export const EditDogProfile = () => {
         //add values to each input to display previous user edits
     return (
         <form className="dogForm">
-            <h2 className="dogForm__title">Edit Dog Profile</h2>
+            <h2 className="dogForm__title">Edit {dog.name}'s Profile</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name: </label>

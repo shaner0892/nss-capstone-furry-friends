@@ -4,6 +4,7 @@ import { DogList } from "../dogs/DogList"
 import { DogProfile } from "../dogs/DogProfile"
 import { EditDogProfile } from "../dogs/EditDogProfile"
 import { AddDog } from "../dogs/NewDogForm"
+import { EventList } from "../events/EventsList"
 import { EditUserProfile } from "../users/EditUserProfile"
 import { UserProfile } from "../users/UserProfile"
 
@@ -26,6 +27,10 @@ export const ApplicationViews = () => {
 
             <Route exact path="/all-dogs">
                 <DogList />
+            </Route>
+
+            <Route exact path="/events">
+                <EventList />
             </Route>
 
             <Route path="/dog-profile/:dogId(\d+)">
