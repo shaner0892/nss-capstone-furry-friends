@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react"
+import { useParams } from "react-router";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { getAllAgeRanges, getAllRescues, getAllSizes } from "../ApiManager";
+import { getAllAgeRanges, getAllRescues, getAllSizes, getCurrentDog } from "../ApiManager";
 
 export const EditDogProfile = () => {
     //use the useState hook function to set the initial value of the new object
     const [rescues, modifyRescues] = useState([])
     const [sizes, modifySizes] = useState([])
-    const [ageRanges, modifyAgeRange] = useState([])
+    const [ages, modifyAgeRange] = useState([])
     const history = useHistory()
-
+    const [dog, updateDog] = useState({});
+    const {dogId} = useParams()
     //add useEffect
     //this is watching for updates to the rescues and sizes array and fetches them from the API, it updates locations to = the locations array from the API
     useEffect(
@@ -38,28 +40,24 @@ export const EditDogProfile = () => {
         },
         []
     )
-    //useState hook function sets the initial value of dog to the defined properties, updateDog is a function you invoke later on to modify the values
-    const [dog, updateDog] = useState({
-        name: "",
-        ageId: 0,
-        sex: "",
-        bio: "",
-        adoptable: false,
-        rescueId: 0,
-        userId: 0,
-        goodWKids: false,
-        goodWDogs: false,
-        goodWCats: false,
-        sizeId: 0
-    });
+    //useEffect to get the current dog selected to edit
+    useEffect(
+        () => {
+            getCurrentDog(parseInt(dogId))
+                .then((dog) => {
+                    updateDog(dog)
+                })
+        },
+        []
+    )
 
-    const addNewDog = (evt) => {
+    const editDog = (evt) => {
         //capture the evt (event) and prevent the default (form submitted and reset) from happening
         evt.preventDefault()
         //object that we want to send to our API
-        const newDog = {
+        const editedDog = {
             name: dog.name,
-            ageId: dog.age,
+            ageId: dog.ageId,
             sex: dog.sex,
             bio: dog.bio,
             adoptable: dog.adoptable,
@@ -78,16 +76,18 @@ export const EditDogProfile = () => {
                 "Content-Type": "application/json"
             },
             //you cannot send JavaScript objects across HTTP so you have to send it in strings/stringify
-            body: JSON.stringify(newDog)
+            body: JSON.stringify(editedDog)
         }
 
-        //fetch the new list of dogs from the API
-        return fetch("http://localhost:8088/dogs?_expand=user&_expand=rescue&_expand=size", fetchOption)
+        //fetch the dog from the API and update it
+            //.push routes you to a new page
+        return fetch(`http://localhost:8088/dogs/${dog.id}`, fetchOption)
             .then(() => {
-                history.push("/dogs")
+                history.push(`/dog-profile/${dog.id}`)
             })
     }
-    //this will be the form you display, you need to capture user input and save to new object
+    //this will be the form you display, you need to capture user input and update the dog object
+        //add values to each input to display previous user edits
     return (
         <form className="dogForm">
             <h2 className="dogForm__title">Edit Dog Profile</h2>
@@ -98,8 +98,7 @@ export const EditDogProfile = () => {
                         required autoFocus
                         type="text"
                         className="form-control"
-                        placeholder="Dog's name"
-                        //this onChange function is an event listener that uses the setter function from above 
+                        //this onChange function is an event listener that uses the setter function from above to update the dog object
                         onChange={
                             (evt) => {
                                 const copy = {...dog}
@@ -112,14 +111,14 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="sex">Sex: </label>
-                        <input type="radio" name="sex" value="Male" onChange={
+                        <input type="radio" name="sex" value="Male" checked={dog.sex==="Male"? "checked" : ""} onChange={
                             (evt) => {
                                 const copy = {...dog}
                                 copy.sex = evt.target.value
                                 updateDog(copy)
                             }
                         }/>Male
-                        <input type="radio" name="sex" value="Female" onChange={
+                        <input type="radio" name="sex" value="Female" checked={dog.sex==="Female"? "checked" : ""} onChange={
                             (evt) => {
                                 const copy = {...dog}
                                 copy.sex = evt.target.value
@@ -131,17 +130,16 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="age">Age Range: </label>
-                    <select name="age" className="form-control"
-                        onChange={
+                    <select name="age" className="form-control" value={dog.ageId}                        onChange={
                             (evt) => {
                                 const copy = {...dog}
-                                copy.age = evt.target.value
+                                copy.ageId = parseInt(evt.target.value)
                                 updateDog(copy)
                             }
                         }
                     >
                         <option value="0">Select Age Range</option>
-                            {ageRanges.map((age) => {
+                            {ages.map((age) => {
                                 return <option value={age.id}>{age.range}</option>
                             })}
                     </select> 
@@ -150,7 +148,7 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="size">Size: </label>
-                    <select name="size" className="form-control"
+                    <select name="size" className="form-control" value={dog.sizeId}  
                         onChange={
                             (evt) => {
                                 const copy = {...dog}
@@ -169,7 +167,7 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="adoptable">Adoptable? </label>
-                    <input type="checkbox"
+                    <input type="checkbox" checked={dog.adoptable ? "checked" : ""}
                         className="form-control"
                         onChange={
                             (evt) => {
@@ -183,7 +181,7 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="location">Rescue: </label>
-                    <select name="rescue" className="form-control"
+                    <select name="rescue" className="form-control" value={dog.rescueId}
                         onChange={
                             (evt) => {
                                 const copy = {...dog}
@@ -202,7 +200,8 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="goodWKids">Good with kids? </label>
-                    <input type="checkbox"
+                    <input checked={dog.goodWKids? "checked" : ""}
+                        type="checkbox"
                         className="form-control"
                         onChange={
                             (evt) => {
@@ -216,7 +215,8 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="goodWDogs">Good with dogs? </label>
-                    <input type="checkbox"
+                    <input checked={dog.goodWDogs? "checked" : ""}
+                        type="checkbox"
                         className="form-control"
                         onChange={
                             (evt) => {
@@ -230,7 +230,8 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="goodWCats">Good with cats? </label>
-                    <input type="checkbox"
+                    <input checked={dog.goodWCats? "checked" : ""}
+                        type="checkbox"
                         className="form-control"
                         onChange={
                             (evt) => {
@@ -243,12 +244,11 @@ export const EditDogProfile = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Bio: </label>
-                    <input
+                    <label htmlFor="bio">Bio: </label>
+                    <input value={dog.bio}
                         required autoFocus
                         type="text"
                         className="form-control"
-                        placeholder="Tell us about your pup!"
                         onChange={
                             (evt) => {
                                 const copy = {...dog}
@@ -264,8 +264,8 @@ export const EditDogProfile = () => {
                 </button>
             </div>
             <div>
-                <button className="btn btn-addDog" onClick={addNewDog} >
-                    Submit
+                <button className="btn btn-editDog" onClick={editDog} >
+                    Save
                 </button>
             </div>
         </form>

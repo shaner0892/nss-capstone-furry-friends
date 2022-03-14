@@ -6,7 +6,17 @@ export const AddDog = () => {
     //use the useState hook function to set the initial value of the new object
     const [rescues, modifyRescues] = useState([])
     const [sizes, modifySizes] = useState([])
-    const [ageRanges, modifyAgeRange] = useState([])
+    const [ages, modifyAgeRange] = useState([])
+    const [user, setUser] = useState({})    
+
+    //this function fetches the current user from local storage and invokes the setUser function to update the user object
+    const currentUser = () => {
+        return fetch(`http://localhost:8088/users/${parseInt(localStorage.getItem("furry_user"))}`)
+            .then(res => res.json())
+            .then(user => setUser(user))
+    }
+
+    currentUser()
 
     //add useEffect
     //this is watching for updates to the rescues and sizes array and fetches them from the API, it updates locations to = the locations array from the API
@@ -60,7 +70,7 @@ export const AddDog = () => {
         //object that we want to send to our API
         const newDog = {
             name: dog.name,
-            ageId: dog.age,
+            ageId: dog.ageId,
             sex: dog.sex,
             bio: dog.bio,
             adoptable: dog.adoptable,
@@ -82,11 +92,9 @@ export const AddDog = () => {
             body: JSON.stringify(newDog)
         }
 
-        //fetch the new list of dogs from the API
+        //fetch the new list of dogs from the API and take the user to their profile page
         return fetch("http://localhost:8088/dogs?_expand=user&_expand=rescue&_expand=size", fetchOption)
-            .then(() => {
-                history.push("/dogs")
-            })
+            .then(() => history.push(`/user-profile/${user.id}`))
     }
     //this will be the form you display, you need to capture user input and save to new object
     return (
@@ -136,13 +144,13 @@ export const AddDog = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...dog}
-                                copy.age = evt.target.value
+                                copy.ageId = parseInt(evt.target.value)
                                 updateDog(copy)
                             }
                         }
                     >
                         <option value="0">Select Age Range</option>
-                            {ageRanges.map((age) => {
+                            {ages.map((age) => {
                                 return <option value={age.id}>{age.range}</option>
                             })}
                     </select> 
@@ -244,7 +252,7 @@ export const AddDog = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Bio: </label>
+                    <label htmlFor="bio">Bio: </label>
                     <input
                         required autoFocus
                         type="text"

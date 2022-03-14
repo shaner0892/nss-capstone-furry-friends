@@ -7,7 +7,6 @@ import "./Login.css"
 export const Register = (props) => {
     const [user, setUser] = useState({})
     const conflictDialog = useRef()
-
     const history = useHistory()
 
     const existingUserCheck = () => {

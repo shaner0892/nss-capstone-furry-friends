@@ -6,7 +6,7 @@ export const getAllUsers = () => {
 }
 
 export const getAllDogs = () => {
-    return fetch("http://localhost:8088/dogs?_expand=user&_expand=rescue&_expand=size")
+    return fetch("http://localhost:8088/dogs?_expand=user&_expand=rescue&_expand=size&_expand=age")
         .then(res => res.json())
 }
 
@@ -21,7 +21,7 @@ export const getAllSizes = () => {
 }
 
 export const getAllAgeRanges = () => {
-    return fetch("http://localhost:8088/ageRanges")
+    return fetch("http://localhost:8088/ages")
         .then(res => res.json())
 }
 
@@ -31,7 +31,12 @@ export const getUserDogs = () => {
 }
 
 export const deleteDog = (id) => {
-    fetch(`http://localhost:8088/dogs/${id}`, {
+    return fetch(`http://localhost:8088/dogs/${id}`, {
         method: "DELETE"
     })
+}
+
+export const getCurrentDog = (id) => {
+    return fetch(`http://localhost:8088/dogs/${id}`)
+        .then(res => res.json())
 }

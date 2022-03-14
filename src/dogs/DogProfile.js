@@ -11,7 +11,7 @@ export const DogProfile = () => {
     //fetch the information for the dog that was clicked on
     useEffect(
         () => {
-            return fetch(`http://localhost:8088/dogs/${dogId}?_expand=user&_expand=rescue&_expand=size`)
+            return fetch(`http://localhost:8088/dogs/${dogId}?_expand=user&_expand=rescue&_expand=size&_expand=age`)
                 .then(res => res.json()) 
                 .then((dogObj) => {
                     modifyDog(dogObj)
@@ -29,8 +29,8 @@ export const DogProfile = () => {
         <h2>All about {dog.name}!</h2>
         <section>
             <div> Name: {dog.name} </div>
-            <div> Gender: {dog.gender} </div>
-            <div> Age Range: {dog.age} </div>
+            <div> Gender: {dog.sex} </div>
+            <div> Age Range: {dog.age?.range} </div>
             <div> Size: {dog.size?.type} </div>
             <div> Adoptable: {dog.adoptable? "Yes" : "No"} </div>
             <div> Rescue: {dog.rescue?.name} </div>

@@ -43,7 +43,7 @@ export const UserProfile = () => {
             <h2>{user.firstName}'s Page</h2>
             <div>Name: {user.firstName} {user.lastName}</div>
             <div>Email: {user.email}</div>
-            <div>Bio: {user.bio}</div>
+            <div>About me: {user.bio}</div>
             <br></br>
             <button onClick={() => history.push(`/edit-user-profile/${parseInt(localStorage.getItem("furry_user"))}`)}> Edit My Profile </button>
 
@@ -55,7 +55,7 @@ export const UserProfile = () => {
                 user.dogs.map(
                     (dog) => {
                         return <div>
-                            <Link to={`/all-dogs/${dog.id}`}>
+                            <Link to={`/dog-profile/${dog.id}`}>
                                 <p key={`dog--${dog.id}`}>{dog.name}</p>
                             </Link>
                             <button onClick={() => history.push(`/edit-dog-profile/${dog.id}`)}> Edit Dog Profile </button>
