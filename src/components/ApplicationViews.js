@@ -1,5 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { BlogPostList } from "../blogs/BlogPostsList"
+import { AddBlogPost } from "../blogs/NewBlogForm"
 import { DogList } from "../dogs/DogList"
 import { DogProfile } from "../dogs/DogProfile"
 import { EditDogProfile } from "../dogs/EditDogProfile"
@@ -21,24 +23,32 @@ export const ApplicationViews = () => {
                 <EditUserProfile />
             </Route>
 
-            <Route path="/edit-dog-profile/:dogId(\d+)">
-                <EditDogProfile />
-            </Route>
-
             <Route exact path="/all-dogs">
                 <DogList />
             </Route>
 
-            <Route exact path="/events">
-                <EventList />
+            <Route path="/add-dog">
+                <AddDog />
             </Route>
 
             <Route path="/dog-profile/:dogId(\d+)">
                 <DogProfile />
             </Route>
 
-            <Route path="/add-dog">
-                <AddDog />
+            <Route path="/edit-dog-profile/:dogId(\d+)">
+                <EditDogProfile />
+            </Route>
+
+            <Route exact path="/events">
+                <EventList />
+            </Route>
+
+            <Route exact path="/blog-posts">
+                <BlogPostList />
+            </Route>
+
+            <Route exact path="/add-blog-posts">
+                <AddBlogPost />
             </Route>
 
         </>

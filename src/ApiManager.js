@@ -30,6 +30,11 @@ export const getAllEvents = () => {
         .then(res => res.json())
 }
 
+export const getAllBlogPosts = () => {
+    return fetch("http://localhost:8088/blogPosts?_expand=user&_expand=dog")
+        .then(res => res.json())
+}
+
 export const getUserDogs = () => {
     return fetch(`http://localhost:8088/users/${parseInt(localStorage.getItem("furry_user"))}?_embed=dogs`)
         .then(res => res.json())

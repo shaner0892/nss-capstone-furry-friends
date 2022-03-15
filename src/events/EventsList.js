@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getAllEvents } from "../ApiManager";
-import { Link } from "react-router-dom"
 
 //this module is responsible for displaying all of the events
 
