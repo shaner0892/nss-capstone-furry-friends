@@ -1,25 +1,29 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
-export default function UploadImages() {
+export default function UploadImages({dog, updateDog}) {
     
-    const [images, setImages] = useState([])
-    const [imageURLs, setImageURLs] = useState([])
+    const [uploadedImage, setUploadedImage] = useState("")
 
-    useEffect(() => {
-        if (images.length < 1 ) return;
-        const newImageURLs = [];
-        images.forEach(image => newImageURLs.push(URL.createObjectURL(image)));
-        setImageURLs(newImageURLs);
-    }, [images]);
-
-    function onImageChange(e) {
-        setImages([...e.target.files]);
+    const checkUploadResult = (resultEvent) => {
+        if (resultEvent.event === "success") {
+            debugger
+            const copy = {...dog}
+            copy.imageURL = resultEvent.info.secure_url
+            updateDog(copy)
+            setUploadedImage(`${resultEvent.info.original_filename}.${resultEvent.info.format}`)
+        }
     }
-    
+
+    const showWidget = (e) => {
+        e.preventDefault()
+        let widget = window.cloudinary.createUploadWidget({cloudName: "dfxsl6a2c", uploadPreset: "tb942fag"}, (error, result) => {checkUploadResult(result)})
+        widget.open()
+    }
+
     return (
         <>
-            <input type="file" multiple accept="image/*" onChange={onImageChange} />
-            { imageURLs.map(imageSrc => <img src={imageSrc}/>)}
+            <button type="file" onClick={showWidget} >Upload an image</button>
+            <p>{uploadedImage}</p>
         </>
     )
 }

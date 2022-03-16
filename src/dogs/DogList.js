@@ -29,7 +29,8 @@ export const DogList = () => {
             {
                 dogs.map(
                     (dog) => {
-                        return <section key={`dog--${dog.id}`}> <Link to={`/dog-profile/${dog.id}`}>{dog.name} </Link> 
+                        return <section key={`dog--${dog.id}`}> <img src={dog.imageURL}/>
+                        <div><Link to={`/dog-profile/${dog.id}`}>{dog.name} </Link> </div>
                         <div>{dog.age?.range} </div>
                         <div>{dog.sex}</div>
                         <div>{dog.adoptable? "Available for adoption!" : "Already adopted"}</div><br></br></section>

@@ -6,36 +6,10 @@ import UploadImages from "../UploadImage";
 export const AddBlogPost = () => {
     //use the useState hook function to set the initial value of the new object
     const [dogs, modifyDogs] = useState([])
-    // const [user, setUser] = useState({})    
     const history = useHistory()
-    // const timeStamp = Date.now()
-
-    // //this function fetches the current user from local storage and invokes the setUser function to update the user object
-    // const currentUser = () => {
-    //     return fetch(`http://localhost:8088/users/${parseInt(localStorage.getItem("furry_user"))}`)
-    //         .then(res => res.json())
-    //         .then(user => setUser(user))
-    // }
-
-    // useEffect(
-    //     () => {
-    //         currentUser()
-    //     },
-    //     []
-    // )
 
     //add useEffect
     //this is watching for updates to the dogs array and fetches them from the API
-    useEffect(
-        () => {
-            getUserDogs()
-                .then((dogsArray) => {
-                    modifyDogs(dogsArray.dogs)
-                })
-        },
-        []
-    )
-
     useEffect(
         () => {
             getUserDogs()
@@ -52,7 +26,8 @@ export const AddBlogPost = () => {
         title: "",
         entryText: "",
         dogId: 0,
-        date: ""
+        date: "",
+        imageURL: ""
     });
 
     const addNewBlogPost = (evt) => {
@@ -122,23 +97,6 @@ export const AddBlogPost = () => {
                     </select> 
                 </div>
             </fieldset>
-            {/* <fieldset>
-                <div className="form-group">
-                    <label htmlFor="date">Date: </label>
-                    <input
-                        required autoFocus
-                        type="text"
-                        className="form-control"
-                        placeholder="01/01/2022"
-                        onChange={
-                            (evt) => {
-                                const copy = {...blogPost}
-                                copy.date = evt.target.value
-                                updateBlogPost(copy)
-                            }
-                        } />
-                </div>
-            </fieldset> */}
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="entryText">Post: </label>
@@ -157,7 +115,6 @@ export const AddBlogPost = () => {
                 </div>
             </fieldset>
             <div>
-                <p>Add an image: </p>
                 <UploadImages />
             </div>
             <div>

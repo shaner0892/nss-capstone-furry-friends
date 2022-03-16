@@ -54,7 +54,7 @@ export const UserProfile = () => {
             {
                 user.dogs.map(
                     (dog) => {
-                        return <div key={`dog--${dog.id}`}>
+                        return <div key={`dog--${dog.id}`}>  <img src={dog.imageURL}/>
                             <Link to={`/dog-profile/${dog.id}`}>
                                 <p>{dog.name}</p>
                             </Link>

@@ -1,6 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { BlogPostList } from "../blogs/BlogPostsList"
+import { EditBlogPost } from "../blogs/EditBlogForm"
 import { AddBlogPost } from "../blogs/NewBlogForm"
 import { DogList } from "../dogs/DogList"
 import { DogProfile } from "../dogs/DogProfile"
@@ -51,6 +52,9 @@ export const ApplicationViews = () => {
                 <AddBlogPost />
             </Route>
 
+            <Route exact path="/edit-blog-posts/:blogPostId(\d+)">
+                <EditBlogPost />
+            </Route>
         </>
     )
 }

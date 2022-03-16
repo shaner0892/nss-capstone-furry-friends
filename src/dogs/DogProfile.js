@@ -28,6 +28,7 @@ export const DogProfile = () => {
         <>
         <h2>All about {dog.name}!</h2>
         <section>
+            <img src={dog.imageURL}/>
             <div> Name: {dog.name} </div>
             <div> Gender: {dog.sex} </div>
             <div> Age Range: {dog.age?.range} </div>

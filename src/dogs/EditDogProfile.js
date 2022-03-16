@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllAgeRanges, getAllRescues, getAllSizes, getCurrentDog } from "../ApiManager";
+import UploadImages from "../UploadImage";
 
 export const EditDogProfile = () => {
     //use the useState hook function to set the initial value of the new object
@@ -66,10 +67,11 @@ export const EditDogProfile = () => {
             goodWKids: dog.goodWKids,
             goodWDogs: dog.goodWDogs,
             goodWCats: dog.goodWCats,
-            sizeId: dog.sizeId
+            sizeId: dog.sizeId,
+            imageURL: ""
         }
 
-        //POST the newDog object from above to the API
+        //PUT the editedDog object from above to the API
         const fetchOption = {
             method: "PUT",
             headers: {
@@ -259,9 +261,7 @@ export const EditDogProfile = () => {
                 </div>
             </fieldset>
             <div>
-                <button className="btn btn-picture" >
-                    Upload a picture
-                </button>
+                <UploadImages />
             </div>
             <div>
                 <button className="btn btn-editDog" onClick={editDog} >

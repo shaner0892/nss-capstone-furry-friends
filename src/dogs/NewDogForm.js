@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllAgeRanges, getAllRescues, getAllSizes } from "../ApiManager";
+import UploadImages from "../UploadImage";
 
 export const AddDog = () => {
     //use the useState hook function to set the initial value of the new object
@@ -64,7 +65,8 @@ export const AddDog = () => {
         goodWKids: false,
         goodWDogs: false,
         goodWCats: false,
-        sizeId: 0
+        sizeId: 0,
+        imageURL: ""
     });
     //need clarification on this ***************
     const history = useHistory()
@@ -84,7 +86,8 @@ export const AddDog = () => {
             goodWKids: dog.goodWKids,
             goodWDogs: dog.goodWDogs,
             goodWCats: dog.goodWCats,
-            sizeId: dog.sizeId
+            sizeId: dog.sizeId,
+            imageURL: ""
         }
 
         //POST the newDog object from above to the API
@@ -272,11 +275,11 @@ export const AddDog = () => {
                         } />
                 </div>
             </fieldset>
-            <div>
-                <button className="btn btn-picture" >
-                    Upload a picture
-                </button>
-            </div>
+            <fieldset>
+                <div className="form-group">
+                    <UploadImages dog={dog} updateDog={updateDog} />
+                </div>
+            </fieldset>
             <div>
                 <button className="btn btn-addDog" onClick={addNewDog} >
                     Submit

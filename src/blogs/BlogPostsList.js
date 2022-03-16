@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllBlogPosts } from "../ApiManager";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { Link } from "react-router-dom"
-
 
 //this module is responsible for displaying all of the blog posts
 
@@ -32,24 +30,23 @@ export const BlogPostList = () => {
             {
                 blogPosts.map(
                     (post) => {
-                        return <section key={`blogPost--${post.id}`}> 
+                        return <section key={`blogPost--${post.id}`}> <img src={post.imageURL}/>
                         <h3>{post.title} </h3>
                         <div>Author: {post.user?.firstName}</div>
                         <div>Date: {post.date}</div>
                         <div>{post.entryText}</div>
                         {
-                            post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <button onClick={() => history.push(`/edit-blog-posts/${post.id}`)}> Edit Blog Post </button> : ""
+                            post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <button id={post.id} onClick={() => history.push(`/edit-blog-posts/${post.id}`)}> Edit Blog Post </button> : ""
+                        }
+                        {/* need to add DELETE method */}
+                        {
+                            post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <button onClick={() => history.push(`/blog-posts`)}> Delete Blog Post </button> : ""
                         }
                         <br></br></section>
                     }
                 )
             }
             <button onClick={() => history.push(`/add-blog-posts`)}> Add New Dog Blog </button>
-            {/* <div>
-                <Link to="/add-blog-posts">
-                    <button > Add New Dog Blog </button>
-                </Link>
-            </div>  */}
         </>
     )
 }

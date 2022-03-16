@@ -29,7 +29,6 @@ export const EventList = () => {
                 events.map(
                     (event) => {
                         return <section key={`event--${event.id}`}> 
-                        {/* <Link to={`/event-profile/${event.id}`}>{event.title} </Link>  */}
                         <h3>{event.title} </h3>
                         <div>Date: {event.date}</div>
                         <div>Time: {event.time}</div>
