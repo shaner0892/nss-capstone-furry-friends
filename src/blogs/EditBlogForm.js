@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router";
 import { getCurrentBlogPost, getUserDogs } from "../ApiManager";
 import UploadImages from "../UploadImage";
+import { Button } from "reactstrap";
 
 export const EditBlogPost = () => {
     //use the useState hook function to set the initial value of the new object
@@ -44,7 +45,7 @@ export const EditBlogPost = () => {
             entryText: blogPost.entryText,
             dogId: blogPost.dogId,
             date: new Date().toLocaleDateString('en-US'),
-            imageURL: ""
+            imageURL: blogPost.imageURL
         }
 
         //PUT the editedPost object from above to the API
@@ -117,13 +118,15 @@ export const EditBlogPost = () => {
                         } />
                 </div>
             </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <UploadImages obj={blogPost} update={updateBlogPost} />
+                </div>
+            </fieldset>
             <div>
-                <UploadImages />
-            </div>
-            <div>
-                <button className="btn btn-editBlogPost" onClick={editBlogPost} >
+                <Button color ="success" outline className="btn btn-editBlogPost" onClick={editBlogPost} >
                     Save
-                </button>
+                </Button>
             </div>
         </form>
     )

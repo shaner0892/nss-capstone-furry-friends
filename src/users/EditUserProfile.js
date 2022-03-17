@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
+import { Button } from "reactstrap"
 
 //this is the edit user profile page
 
@@ -68,7 +69,7 @@ export const EditUserProfile = (props) => {
                     <input value={user.bio} onChange={updateUser} type="text" id="bio" className="form-control" placeholder="Tell us about yourself" />
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Save </button>
+                    <Button color ="success" outline type="submit"> Save </Button>
                 </fieldset>
             </form>
         </main>

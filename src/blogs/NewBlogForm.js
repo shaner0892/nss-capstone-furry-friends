@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getUserDogs } from "../ApiManager";
 import UploadImages from "../UploadImage";
+import { Button } from "reactstrap";
 
 export const AddBlogPost = () => {
     //use the useState hook function to set the initial value of the new object
@@ -39,7 +40,8 @@ export const AddBlogPost = () => {
             title: blogPost.title,
             entryText: blogPost.entryText,
             dogId: blogPost.dogId,
-            date: new Date().toLocaleDateString('en-US')
+            date: new Date().toLocaleDateString('en-US'),
+            imageURL: blogPost.imageURL
         }
 
         //POST the newDog object from above to the API
@@ -114,13 +116,15 @@ export const AddBlogPost = () => {
                         } />
                 </div>
             </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <UploadImages obj={blogPost} update={updateBlogPost} />
+                </div>
+            </fieldset>
             <div>
-                <UploadImages />
-            </div>
-            <div>
-                <button className="btn btn-addBlogPost" onClick={addNewBlogPost} >
+                <Button color ="success" outline className="btn btn-addBlogPost" onClick={addNewBlogPost} >
                     Submit
-                </button>
+                </Button>
             </div>
         </form>
     )

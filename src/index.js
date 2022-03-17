@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { FurryFriends } from './components/FurryFriends';
 import { BrowserRouter } from 'react-router-dom'
+import "bootstrap/dist/css/bootstrap.min.css"
 
 ReactDOM.render(
   <React.StrictMode>

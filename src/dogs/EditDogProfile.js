@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllAgeRanges, getAllRescues, getAllSizes, getCurrentDog } from "../ApiManager";
 import UploadImages from "../UploadImage";
+import { Button } from "reactstrap";
 
 export const EditDogProfile = () => {
     //use the useState hook function to set the initial value of the new object
@@ -68,7 +69,7 @@ export const EditDogProfile = () => {
             goodWDogs: dog.goodWDogs,
             goodWCats: dog.goodWCats,
             sizeId: dog.sizeId,
-            imageURL: ""
+            imageURL: dog.imageURL
         }
 
         //PUT the editedDog object from above to the API
@@ -260,13 +261,15 @@ export const EditDogProfile = () => {
                         } />
                 </div>
             </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <UploadImages obj={dog} update={updateDog} />
+                </div>
+            </fieldset>
             <div>
-                <UploadImages />
-            </div>
-            <div>
-                <button className="btn btn-editDog" onClick={editDog} >
+                <Button color ="success" outline className="btn btn-editDog" onClick={editDog} >
                     Save
-                </button>
+                </Button>
             </div>
         </form>
     )

@@ -1,15 +1,15 @@
 import React, { useState } from "react"
+import { Button } from "reactstrap"
 
-export default function UploadImages({dog, updateDog}) {
+export default function UploadImages({obj, update}) {
     
     const [uploadedImage, setUploadedImage] = useState("")
 
     const checkUploadResult = (resultEvent) => {
         if (resultEvent.event === "success") {
-            debugger
-            const copy = {...dog}
+            const copy = {...obj}
             copy.imageURL = resultEvent.info.secure_url
-            updateDog(copy)
+            update(copy)
             setUploadedImage(`${resultEvent.info.original_filename}.${resultEvent.info.format}`)
         }
     }
@@ -22,7 +22,7 @@ export default function UploadImages({dog, updateDog}) {
 
     return (
         <>
-            <button type="file" onClick={showWidget} >Upload an image</button>
+            <Button color ="success" outline type="file" onClick={showWidget} >Upload an image</Button>
             <p>{uploadedImage}</p>
         </>
     )

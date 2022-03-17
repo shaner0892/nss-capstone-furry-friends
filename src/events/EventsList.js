@@ -28,8 +28,8 @@ export const EventList = () => {
             {
                 events.map(
                     (event) => {
-                        return <section key={`event--${event.id}`}> 
-                        <h3>{event.title} </h3>
+                        return <section class="eventList" key={`event--${event.id}`}> 
+                        <h4>{event.title} </h4>
                         <div>Date: {event.date}</div>
                         <div>Time: {event.time}</div>
                         <div>Location: {event.location}</div>

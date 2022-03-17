@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllAgeRanges, getAllRescues, getAllSizes } from "../ApiManager";
 import UploadImages from "../UploadImage";
+import { Button } from "reactstrap";
 
 export const AddDog = () => {
     //use the useState hook function to set the initial value of the new object
@@ -87,7 +88,7 @@ export const AddDog = () => {
             goodWDogs: dog.goodWDogs,
             goodWCats: dog.goodWCats,
             sizeId: dog.sizeId,
-            imageURL: ""
+            imageURL: dog.imageURL
         }
 
         //POST the newDog object from above to the API
@@ -277,13 +278,13 @@ export const AddDog = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <UploadImages dog={dog} updateDog={updateDog} />
+                    <UploadImages obj={dog} update={updateDog} />
                 </div>
             </fieldset>
             <div>
-                <button className="btn btn-addDog" onClick={addNewDog} >
+                <Button color ="success" outline className="btn btn-addDog" onClick={addNewDog} >
                     Submit
-                </button>
+                </Button>
             </div>
         </form>
     )
