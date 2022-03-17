@@ -30,51 +30,22 @@ export const DogList = () => {
             //use dynamic routing to create a link on each dog's name to access their individual profile*/}
             
             <h2>Furry Friends</h2>
+            <section class="dogList">
             {
                 dogs.map(
                     (dog) => {
-                        return <section class="dogList" key={`dog--${dog.id}`}> 
+                        return <section class="dog" key={`dog--${dog.id}`}> 
                             <img src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)}/>
                             <div>{dog.name} </div>
                             <div>{dog.age?.range} </div>
                             <div>{dog.sex}</div>
-                            <div>{dog.adoptable? "Available for adoption!" : "Already adopted"}</div><br></br>
+                            <div>{dog.adoptable? "Available for adoption!" : "Already adopted"}</div>
                             {/* <Button color ="success" outline >Learn more</Button> */}
                         </section>
                     }
                 )
             }
-            
-            
-            {/* <h2>Furry Friends</h2>
-            <CardGroup>
-            {
-                dogs.map(
-                    (dog) => {
-                        <Card>
-                            <CardImg
-                                alt="dog profile picture"
-                                src={dog.imageURL}
-                                top
-                                width="100%"
-                            />
-                            <CardBody>
-                                <CardTitle tag="h5">
-                                    {dog.name}
-                                </CardTitle>
-                                <CardText>
-                                    <div>{dog.age?.range} </div>
-                                    <div>{dog.sex}</div>
-                                    <div>{dog.adoptable? "Available for adoption!" : "Already adopted"}</div>                                </CardText>
-                                <Button>
-                                    Button
-                                </Button>
-                            </CardBody>
-                        </Card>
-                    }
-                )
-            }
-            </CardGroup> */}
+            </section>
         </>
     )
 }

@@ -69,7 +69,7 @@ export const EditUserProfile = (props) => {
                     <input value={user.bio} onChange={updateUser} type="text" id="bio" className="form-control" placeholder="Tell us about yourself" />
                 </fieldset>
                 <fieldset>
-                    <Button color ="success" outline type="submit"> Save </Button>
+                    <Button id="btn" color="success" outline type="submit"> Save </Button>
                 </fieldset>
             </form>
         </main>

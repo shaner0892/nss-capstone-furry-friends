@@ -267,7 +267,7 @@ export const EditDogProfile = () => {
                 </div>
             </fieldset>
             <div>
-                <Button color ="success" outline className="btn btn-editDog" onClick={editDog} >
+                <Button id="btn" color ="success" outline className="btn btn-editDog" onClick={editDog} >
                     Save
                 </Button>
             </div>

@@ -122,7 +122,7 @@ export const AddBlogPost = () => {
                 </div>
             </fieldset>
             <div>
-                <Button color ="success" outline className="btn btn-addBlogPost" onClick={addNewBlogPost} >
+                <Button id="btn" color ="success" outline className="btn btn-addBlogPost" onClick={addNewBlogPost} >
                     Submit
                 </Button>
             </div>

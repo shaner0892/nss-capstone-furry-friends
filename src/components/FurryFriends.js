@@ -15,7 +15,7 @@ export const FurryFriends = () => (
                 return (
                 <>
                     <h1>Nashville Furry Friends </h1>
-                    <h4>Helping foster dogs find their furever homes since 2022</h4>                  
+                    <h5>Helping foster dogs find their furever homes since 2022</h5>                  
                     <NavBar />
                     <ApplicationViews />
                 </>

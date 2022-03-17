@@ -124,7 +124,7 @@ export const EditBlogPost = () => {
                 </div>
             </fieldset>
             <div>
-                <Button color ="success" outline className="btn btn-editBlogPost" onClick={editBlogPost} >
+                <Button id="btn" color ="success" outline className="btn btn-editBlogPost" onClick={editBlogPost} >
                     Save
                 </Button>
             </div>

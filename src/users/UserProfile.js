@@ -41,39 +41,36 @@ export const UserProfile = () => {
     return (
         <>
             {/* //display user's name and bio, add an edit button */}
+            {/* //display add new dog button, <Link> to take to NewDogForm*/}
             <h2>{user.firstName}'s Page</h2>
             <section class="userProfile">
                 <div><b>Name:</b> {user.firstName} {user.lastName}</div>
                 <div><b>Email:</b> {user.email}</div>
                 <div><b>About me:</b> {user.bio}</div>
                 <br></br>
-                <Button color ="success" outline onClick={() => history.push(`/edit-user-profile/${parseInt(localStorage.getItem("furry_user"))}`)}> Edit My Profile </Button>
+                <Button id="btn" color ="success" outline onClick={() => history.push(`/edit-user-profile/${parseInt(localStorage.getItem("furry_user"))}`)}> Edit My Profile </Button><br></br>
             </section>
 
             <h3>My Dogs</h3>
+                <Button id="rightBtn" color ="success" outline onClick={() => history.push("/add-dog")}> Add New Dog </Button>
             {/* use map array method to display each dog for the user 
             make the name clickable and show the individual profile
             add an edit and delete button*/}
-            {
-                user.dogs.map(
-                    (dog) => {
-                        return <section class="dogList" >
-                            <div key={`dog--${dog.id}`}>  <img src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)}/>
-                                <p>{dog.name}</p>
-                                <Button color ="success" outline onClick={() => history.push(`/edit-dog-profile/${dog.id}`)}> Edit Dog Profile </Button>
-                                <Button color ="success" outline onClick={() => {removeDog(dog.id)}}> Delete Dog Profile </Button>
-                            </div>
-                        </section>
-                    }
-                )
-            }
-            <br></br>
-            {/* //display add new dog button, <Link> to take to NewDogForm*/}
-            <div>
-                <Link to="/add-dog">
-                    <Button color ="success" outline> Add New Dog </Button>
-                </Link>
-            </div> 
+            <section class="dogList">
+                {
+                    user.dogs.map(
+                        (dog) => {
+                            return <section class="dog" key={`dog--${dog.id}`}>
+                                        <img src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)}/>
+                                        <p>{dog.name}</p>
+                                        <Button id="btn" color ="success" outline onClick={() => history.push(`/edit-dog-profile/${dog.id}`)}> Edit Profile </Button><br></br>
+                                        <Button id="btn" color ="success" outline onClick={() => {removeDog(dog.id)}}> Delete Profile </Button>
+                                    </section>
+                        }
+                    )
+                }
+                <br></br>
+            </section>
         </>
     )
 }

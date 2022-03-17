@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
 import "./Login.css"
+import { Button } from "reactstrap";
 
 //this is the login page for users
 
@@ -39,19 +40,19 @@ export const Login = () => {
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>Nashville Furry Friends</h1>
-                    <h2>Please sign in</h2>
+                    <h3>Please sign in</h3>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
-                        <input type="email"
+                        <input type="email" 
                             onChange={evt => set(evt.target.value)}
                             className="form-control"
                             placeholder="Email address"
                             required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <Button id="btn" color="success" outline type="submit">
                             Sign in
-                        </button>
+                        </Button>
                     </fieldset>
                 </form>
             </section>

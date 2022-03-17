@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
 import "./Login.css"
+import { Button } from "reactstrap"
 
 //this is the registration form for new users
 
@@ -77,7 +78,7 @@ export const Register = (props) => {
                     <input onChange={updateUser} type="text" id="bio" className="form-control" placeholder="Tell us about yourself" />
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Register </button>
+                    <Button id="btn" color="success" outline type="submit"> Register </Button>
                 </fieldset>
             </form>
         </main>

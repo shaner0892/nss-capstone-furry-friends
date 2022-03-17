@@ -27,8 +27,8 @@ export const DogProfile = () => {
         // use a ternary statement to display contact info IF they are adoptable
         <>
         <h2>All about {dog.name}!</h2>
-        <section className="dogList">
-            <img src={dog.imageURL}/>
+        <section class="dogProfile">
+            <img class="dogProfilePic" src={dog.imageURL}/>
             <div> Name: {dog.name} </div>
             <div> Sex: {dog.sex} </div>
             <div> Age Range: {dog.age?.range} </div>
