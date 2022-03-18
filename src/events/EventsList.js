@@ -30,11 +30,11 @@ export const EventList = () => {
                     (event) => {
                         return <section class="eventList" key={`event--${event.id}`}> 
                         <h4>{event.title} </h4>
-                        <div>Date: {event.date}</div>
-                        <div>Time: {event.time}</div>
-                        <div>Location: {event.location}</div>
-                        <div>About: {event.description}</div>
-                        <div>Hosted by: {event.rescue?.name}</div>
+                        <div><b>Date:</b> {event.date}</div>
+                        <div><b>Time:</b> {event.time}</div>
+                        <div><b>Location:</b> {event.location}</div>
+                        <div><b>About:</b> {event.description}</div>
+                        <div><b>Hosted by:</b> {event.rescue?.name}</div>
                         <br></br></section>
                     }
                 )

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { getAllDogs } from "../ApiManager";
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router";
-import { CardGroup, Card, CardImg, CardBody, CardTitle, CardSubtitle, Button, CardText } from "reactstrap";
 
 //this module is responsible for displaying all of the dogs
 
@@ -36,7 +35,7 @@ export const DogList = () => {
                     (dog) => {
                         return <section class="dog" key={`dog--${dog.id}`}> 
                             <img src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)}/>
-                            <div>{dog.name} </div>
+                            <div><b>{dog.name}</b> </div>
                             <div>{dog.age?.range} </div>
                             <div>{dog.sex}</div>
                             <div>{dog.adoptable? "Available for adoption!" : "Already adopted"}</div>

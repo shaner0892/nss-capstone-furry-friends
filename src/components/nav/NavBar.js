@@ -1,7 +1,8 @@
 import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css"
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, NavLink } from "reactstrap";
+// import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, NavLink } from "reactstrap";
+import { Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink } from 'reactstrap';
 
 // This is a Presentation Component. Directly expresses HTML.
 // NavBar includes: my dogs, all dogs, and logout (stretch goal: events and blog posts)
@@ -9,43 +10,66 @@ import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, NavLink } f
 
 
 export const NavBar = (props) => {
-    const [collapsed, setCollapsed] = useState(true);
+    // const [collapsed, setCollapsed] = useState(true);
 
-    const toggleNavbar = () => setCollapsed(!collapsed);
+    // const toggleNavbar = () => setCollapsed(!collapsed);
+        
     return (
-        <div>
-           <Navbar color="faded" light>
-        <NavbarBrand href="/" className="mr-auto" href="/all-dogs">Furry Friends</NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!collapsed} navbar>
-                    <Nav navbar>
-                        <NavItem>
-                            <NavLink href="/all-dogs">All Dogs</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href={`/user-profile/${parseInt(localStorage.getItem("furry_user"))}`}>
-                                My Profile
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="/events">Events</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="/blog-posts">Dog Blogs</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink
-                                href="#" onClick={() => {
-                                    localStorage.removeItem("furry_user");
-                                }}
-                            >
-                                Logout
-                            </NavLink>
-                        </NavItem>
-                    </Nav>
-                </Collapse>
-            </Navbar>
-        </div>
+
+    <div class="navBar">
+      <Nav pills>
+        <NavItem class="navBar_item">
+          <NavLink href="/all-dogs">All Dogs</NavLink>
+        </NavItem>
+        <NavItem class="navBar_item">
+          <NavLink href={`/user-profile/${parseInt(localStorage.getItem("furry_user"))}`}>My Profile</NavLink>
+        </NavItem>
+        <NavItem class="navBar_item">
+          <NavLink href="/events">Events</NavLink>
+        </NavItem>
+        <NavItem class="navBar_item">
+          <NavLink href="/blog-posts">Dog Blogs</NavLink>
+        </NavItem>
+        <NavItem class="navBar_item">
+          <NavLink href="/login" onClick={() => {localStorage.removeItem("furry_user")}}>Logout</NavLink>
+        </NavItem>
+      </Nav>
+    </div>
+
+
+        // <div>
+        //    <Navbar color="faded" light>
+        // <NavbarBrand href="/" className="mr-auto" href="/all-dogs">Furry Friends</NavbarBrand>
+        // <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        // <Collapse isOpen={!collapsed} navbar>
+        //             <Nav navbar>
+        //                 <NavItem>
+        //                     <NavLink href="/all-dogs">All Dogs</NavLink>
+        //                 </NavItem>
+        //                 <NavItem>
+        //                     <NavLink href={`/user-profile/${parseInt(localStorage.getItem("furry_user"))}`}>
+        //                         My Profile
+        //                     </NavLink>
+        //                 </NavItem>
+        //                 <NavItem>
+        //                     <NavLink href="/events">Events</NavLink>
+        //                 </NavItem>
+        //                 <NavItem>
+        //                     <NavLink href="/blog-posts">Dog Blogs</NavLink>
+        //                 </NavItem>
+        //                 <NavItem>
+        //                     <NavLink
+        //                         href="/login"" onClick={() => {
+        //                             localStorage.removeItem("furry_user");
+        //                         }}
+        //                     >
+        //                         Logout
+        //                     </NavLink>
+        //                 </NavItem>
+        //             </Nav>
+        //         </Collapse>
+        //     </Navbar>
+        // </div>
 
         // <ul className="navbar">
         //     <li className="navbar__item active">

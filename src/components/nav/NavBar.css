@@ -1,10 +1,11 @@
-.navbar {
+.navBar {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
+    justify-content: space-evenly;
 }
 
-.navbar__item {
-    flex-basis: 20%;
-    list-style-type: none;
+.navBar__item {
+    flex-basis: 50%;
+    margin: 500px;
+    /* list-style-type: none; */
 }
