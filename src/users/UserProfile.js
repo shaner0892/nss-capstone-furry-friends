@@ -46,6 +46,7 @@ export const UserProfile = () => {
             <section class="userProfile">
                 <div><b>Name:</b> {user.firstName} {user.lastName}</div>
                 <div><b>Email:</b> {user.email}</div>
+                <div><b>Current foster:</b> {user.foster? "Yes" : "No"}</div>
                 <div><b>About me:</b> {user.bio}</div>
                 <br></br>
                 <Button id="btn" color ="success" outline onClick={() => history.push(`/edit-user-profile/${parseInt(localStorage.getItem("furry_user"))}`)}> Edit My Profile </Button><br></br>

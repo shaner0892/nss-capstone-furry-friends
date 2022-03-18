@@ -65,6 +65,11 @@ export const EditUserProfile = (props) => {
                     <input value={user.email} onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
+                    <label htmlFor="foster">Do you currently foster dogs? </label>
+                    <input checked={user.foster ? "checked" : ""} type="checkbox"
+                        className="check" onChange={updateUser}/>
+                </fieldset>
+                <fieldset>
                     <label htmlFor="bio"> About me: </label>
                     <input value={user.bio} onChange={updateUser} type="text" id="bio" className="form-control" placeholder="Tell us about yourself" />
                 </fieldset>

@@ -31,15 +31,25 @@ img {
 }
 
 .dogProfile {
+  border: 2px solid black;
+  padding: 10px;
   margin: 15px;
+  width: 50%;
   text-align: center;
+  /* justify-content: center; */
+  /* display: block; */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .dogProfilePic {
   margin: 15px;
   width: 40%;
   height: fit-content;
-  justify-content: center;
+  /* justify-content: center; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .blogList {
@@ -86,12 +96,12 @@ img {
 }
 
 .title {
-  font-size: 65px;
+  font-size: 70px;
 }
 
 .logo {
-  height: 118px;
-  width: 118px;
+  height: 124px;
+  width: 124px;
   /* left: 100px; */
   /* display: inline-block; */
   /* float: right; */
@@ -124,4 +134,15 @@ h4, h5 {
 #btn {
   margin: 10px;
   position: relative;
+}
+
+.box {
+  height: 20px;
+  width: 20px;
+  margin: 5px;
+  display:inline-flex;
+}
+
+.radio {
+  margin: 10px;
 }

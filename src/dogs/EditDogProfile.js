@@ -114,14 +114,14 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="sex">Sex: </label>
-                        <input type="radio" name="sex" value="Male" checked={dog.sex==="Male"? "checked" : ""} onChange={
+                        <input type="radio" name="sex" value="Male" class="radio" checked={dog.sex==="Male"? "checked" : ""} onChange={
                             (evt) => {
                                 const copy = {...dog}
                                 copy.sex = evt.target.value
                                 updateDog(copy)
                             }
                         }/>Male
-                        <input type="radio" name="sex" value="Female" checked={dog.sex==="Female"? "checked" : ""} onChange={
+                        <input type="radio" name="sex" value="Female" class="radio" checked={dog.sex==="Female"? "checked" : ""} onChange={
                             (evt) => {
                                 const copy = {...dog}
                                 copy.sex = evt.target.value
@@ -171,7 +171,7 @@ export const EditDogProfile = () => {
                 <div className="form-group">
                     <label htmlFor="adoptable">Adoptable? </label>
                     <input type="checkbox" checked={dog.adoptable ? "checked" : ""}
-                        className="form-control"
+                        className="box"
                         onChange={
                             (evt) => {
                                 const copy = {...dog}
@@ -205,7 +205,7 @@ export const EditDogProfile = () => {
                     <label htmlFor="goodWKids">Good with kids? </label>
                     <input checked={dog.goodWKids? "checked" : ""}
                         type="checkbox"
-                        className="form-control"
+                        className="box"
                         onChange={
                             (evt) => {
                                 const copy = {...dog}
@@ -220,7 +220,7 @@ export const EditDogProfile = () => {
                     <label htmlFor="goodWDogs">Good with dogs? </label>
                     <input checked={dog.goodWDogs? "checked" : ""}
                         type="checkbox"
-                        className="form-control"
+                        className="box"
                         onChange={
                             (evt) => {
                                 const copy = {...dog}
@@ -235,7 +235,7 @@ export const EditDogProfile = () => {
                     <label htmlFor="goodWCats">Good with cats? </label>
                     <input checked={dog.goodWCats? "checked" : ""}
                         type="checkbox"
-                        className="form-control"
+                        className="box"
                         onChange={
                             (evt) => {
                                 const copy = {...dog}

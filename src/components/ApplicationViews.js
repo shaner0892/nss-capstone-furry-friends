@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 import { BlogPostList } from "../blogs/BlogPostsList"
 import { EditBlogPost } from "../blogs/EditBlogForm"
 import { AddBlogPost } from "../blogs/NewBlogForm"
+import { AdoptableDogs } from "../dogs/AdoptableDogs"
 import { DogList } from "../dogs/DogList"
 import { DogProfile } from "../dogs/DogProfile"
 import { EditDogProfile } from "../dogs/EditDogProfile"
@@ -10,12 +11,17 @@ import { AddDog } from "../dogs/NewDogForm"
 import { EventList } from "../events/EventsList"
 import { EditUserProfile } from "../users/EditUserProfile"
 import { UserProfile } from "../users/UserProfile"
+import { LandingPage } from "./LandingPage"
 
 //This is a Controller Component. Its only responsibility is to determine which view of the application should be rendered 
 
 export const ApplicationViews = () => {
     return (
         <>
+            {/* <Route path="/home">
+                <LandingPage />
+            </Route> */}
+
             <Route path="/user-profile/:userId(\d+)">
                 <UserProfile />
             </Route>

@@ -74,6 +74,12 @@ export const Register = (props) => {
                     <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
+                    <label htmlFor="foster">Do you currently foster dogs? </label>
+                    <input type="checkbox"
+                        className="box"
+                        onChange={updateUser}/>
+                </fieldset>
+                <fieldset>
                     <label htmlFor="bio"> About me: </label>
                     <input onChange={updateUser} type="text" id="bio" className="form-control" placeholder="Tell us about yourself" />
                 </fieldset>

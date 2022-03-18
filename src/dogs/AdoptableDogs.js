@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getAllDogs } from "../ApiManager";
-import { Link } from "react-router-dom"
 import { useHistory } from "react-router";
-import { AdoptableDogs } from "./AdoptableDogs";
 
 //this module is responsible for displaying all of the dogs
 
-export const DogList = () => {
+export const AdoptableDogs = () => {
     //useState is a hook, it takes a single argument and returns an array
     const [dogs, modifyDogs] = useState([])
     const history = useHistory()
@@ -22,6 +20,11 @@ export const DogList = () => {
         []
     )
 
+    const adoptableDogs = dogs.filter((dog) => {
+        return dog.adoptable === true
+    })
+    
+
     return (
         <>
             {/* //iterate dogs using map array method and convert them from objects to html using jsx
@@ -30,22 +33,16 @@ export const DogList = () => {
             //use dynamic routing to create a link on each dog's name to access their individual profile*/}
             
             <h2>Furry Friends</h2>
-            <label class="switch">Only show dogs available for adoption:
-                <input type="checkbox" 
-                // onclick={AdoptableDogs}
-                />
-                <span class="slider round"></span>
-            </label>
             <section class="dogList">
             {
-                dogs.map(
+                adoptableDogs.map(
                     (dog) => {
                         return <section class="dog" key={`dog--${dog.id}`}> 
                             <img src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)}/>
                             <div><b>{dog.name}</b> </div>
                             <div>{dog.age?.range} </div>
                             <div>{dog.sex}</div>
-                            <div>{dog.adoptable? "Available for adoption!" : "Already adopted"}</div>
+                            {/* <div>{dog.adoptable? "Available for adoption!" : "Already adopted"}</div> */}
                             {/* <Button color ="success" outline >Learn more</Button> */}
                         </section>
                     }

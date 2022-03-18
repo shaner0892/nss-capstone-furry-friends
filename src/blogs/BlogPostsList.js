@@ -42,7 +42,7 @@ export const BlogPostList = () => {
                             {
                                 post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <Button color ="success" outline  id={post.id} onClick={() => history.push(`/edit-blog-posts/${post.id}`)}> Edit Blog Post </Button> : ""
                             }
-
+                            <br></br>
                             {
                                 post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <Button color ="success" outline  onClick={() => history.push(`/blog-posts`)}> Delete Blog Post </Button> : ""
                             }
