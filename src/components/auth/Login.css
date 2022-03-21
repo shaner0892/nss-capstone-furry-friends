@@ -6,6 +6,7 @@ h3 {
     text-align: center;
     background-color:rgba(122, 190, 159, 0.485);
     padding: 10px;
+    margin: 0;
 
 }
 
@@ -18,7 +19,7 @@ fieldset {
 
 .form--login {
     display: inline-block;
-    margin: 0 auto;
+    margin: 5px;
     text-align: left;
 }
 

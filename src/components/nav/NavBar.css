@@ -6,6 +6,7 @@
 
 .navBar__item {
     flex-basis: 50%;
-    margin: 500px;
+    margin: 1000px;
+    color: #000;
     /* list-style-type: none; */
 }

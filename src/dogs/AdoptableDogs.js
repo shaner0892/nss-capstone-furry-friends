@@ -32,7 +32,6 @@ export const AdoptableDogs = () => {
             //need to display their picture 
             //use dynamic routing to create a link on each dog's name to access their individual profile*/}
             
-            <h2>Furry Friends</h2>
             <section class="dogList">
             {
                 adoptableDogs.map(
@@ -42,8 +41,7 @@ export const AdoptableDogs = () => {
                             <div><b>{dog.name}</b> </div>
                             <div>{dog.age?.range} </div>
                             <div>{dog.sex}</div>
-                            {/* <div>{dog.adoptable? "Available for adoption!" : "Already adopted"}</div> */}
-                            {/* <Button color ="success" outline >Learn more</Button> */}
+                            <div>{dog.adoptable? "Available for adoption!" : "Already adopted"}</div>
                         </section>
                     }
                 )
