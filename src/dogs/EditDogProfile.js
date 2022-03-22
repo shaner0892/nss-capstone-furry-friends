@@ -248,7 +248,7 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="bio">Bio: </label>
-                    <input value={dog.bio}
+                    <textarea id="form-bio" cols="40" rows="5" value={dog.bio}
                         required autoFocus
                         type="text"
                         className="form-control"
@@ -258,7 +258,7 @@ export const EditDogProfile = () => {
                                 copy.bio = evt.target.value
                                 updateDog(copy)
                             }
-                        } />
+                        } ></textarea>
                 </div>
             </fieldset>
             <fieldset>
@@ -267,7 +267,7 @@ export const EditDogProfile = () => {
                 </div>
             </fieldset>
             <div>
-                <Button id="btn" color ="success" outline className="btn btn-editDog" onClick={editDog} >
+                <Button id="btn" color="success" outline className="btn btn-editDog" onClick={editDog} >
                     Save
                 </Button>
             </div>

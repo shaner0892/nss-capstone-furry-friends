@@ -3,7 +3,6 @@ import { Route } from "react-router-dom"
 import { BlogPostList } from "../blogs/BlogPostsList"
 import { EditBlogPost } from "../blogs/EditBlogForm"
 import { AddBlogPost } from "../blogs/NewBlogForm"
-import { AdoptableDogs } from "../dogs/AdoptableDogs"
 import { DogList } from "../dogs/DogList"
 import { DogProfile } from "../dogs/DogProfile"
 import { EditDogProfile } from "../dogs/EditDogProfile"
@@ -18,9 +17,9 @@ import { LandingPage } from "./LandingPage"
 export const ApplicationViews = () => {
     return (
         <>
-            {/* <Route path="/home">
+            <Route path="/home">
                 <LandingPage />
-            </Route> */}
+            </Route>
 
             <Route path="/user-profile/:userId(\d+)">
                 <UserProfile />

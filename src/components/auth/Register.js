@@ -54,9 +54,13 @@ export const Register = (props) => {
                 <div>Account with that email address already exists</div>
                 <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
             </dialog>
-
+            <div class="header">
+                <img className="logo" src="https://res.cloudinary.com/dfxsl6a2c/image/upload/v1647634780/Yellow_Brown_Petshop_Point_Logo_l7v1l2.png" alt="logo" />
+                <h1 class="title">Nashville Furry Friends </h1>
+            </div>
+            <h5>Helping foster dogs find their furever homes since 2022</h5>
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for Nashville Furry Friends</h1>
+                <h3 className="h3 mb-3 font-weight-normal">Please Register for Nashville Furry Friends</h3>
                 <fieldset>
                     <label htmlFor="firstName"> First Name: </label>
                     <input onChange={updateUser}

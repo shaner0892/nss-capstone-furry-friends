@@ -262,7 +262,7 @@ export const AddDog = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="bio">Bio: </label>
-                    <input
+                    <textarea id="form-bio" cols="40" rows="5"
                         required autoFocus
                         type="text"
                         className="form-control"
@@ -273,7 +273,7 @@ export const AddDog = () => {
                                 copy.bio = evt.target.value
                                 updateDog(copy)
                             }
-                        } />
+                        } ></textarea>
                 </div>
             </fieldset>
             <fieldset>

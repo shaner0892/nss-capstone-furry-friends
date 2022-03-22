@@ -49,6 +49,21 @@ fieldset {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.form-group {
+    margin: 10px;
+}
+
+#form-bio, #bio {
+    height:100px;
+    /* display:-webkit-box; */
+} 
+
+.dogForm {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
 #check {
     width: 35px;
 }

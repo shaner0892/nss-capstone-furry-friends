@@ -3,6 +3,7 @@ import { getAllDogs } from "../ApiManager";
 import { useHistory } from "react-router";
 import { AdoptableDogs } from "./AdoptableDogs";
 import { AllDogs } from "./AllDogs";
+import "./ToggleBar.css"
 
 //this module is responsible for displaying all of the dogs
 

@@ -29,16 +29,16 @@ export const DogProfile = () => {
         <h2>All about {dog.name}!</h2>
             <img class="dogProfilePic" src={dog.imageURL}/>
         <section class="dogProfile">
-            <div> Name: {dog.name} </div>
-            <div> Sex: {dog.sex} </div>
-            <div> Age Range: {dog.age?.range} </div>
-            <div> Size: {dog.size?.type} </div>
-            <div> Adoptable: {dog.adoptable? "Yes" : "No"} </div>
-            <div> Rescue: {dog.rescue?.name} </div>
-            <div> Good with kids? {dog.goodWKids? "Yes" : "No"} </div>
-            <div> Good with dogs? {dog.goodWDogs? "Yes" : "No"} </div>
-            <div> Good with cats? {dog.goodWCats? "Yes" : "No"} </div>
-            <div> Bio: {dog.bio} </div>
+            <div> <b>Name:</b> {dog.name} </div>
+            <div> <b>Sex:</b> {dog.sex} </div>
+            <div> <b>Age Range:</b> {dog.age?.range} </div>
+            <div> <b>Size:</b> {dog.size?.type} </div>
+            <div> <b>Adoptable:</b> {dog.adoptable? "Yes" : "No"} </div>
+            <div> <b>Rescue:</b> {dog.rescue?.name} </div>
+            <div> <b>Good with kids?</b> {dog.goodWKids? "Yes" : "No"} </div>
+            <div> <b>Good with dogs?</b> {dog.goodWDogs? "Yes" : "No"} </div>
+            <div> <b>Good with cats?</b> {dog.goodWCats? "Yes" : "No"} </div>
+            <div> <b>Bio:</b> {dog.bio} </div>
             <br></br>
             <div>{dog.adoptable? `To learn more about adopting me you can contact ${dog.rescue?.name} at ${dog.rescue?.email} or my foster, ${dog.user?.firstName} at ${dog.user?.email}` : ""} </div>
         </section>

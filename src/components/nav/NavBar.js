@@ -21,9 +21,9 @@ export const NavBar = (props) => {
             <h5>Helping foster dogs find their furever homes since 2022</h5>
             <div class="navBar">
                 <Nav pills>
-                    {/* <NavItem class="navBar_item">
+                    <NavItem class="navBar_item">
                         <NavLink href="/home">Home</NavLink>
-                    </NavItem> */}
+                    </NavItem>
                     <NavItem class="navBar_item">
                         <NavLink href="/all-dogs">All Dogs</NavLink>
                     </NavItem>
@@ -43,64 +43,5 @@ export const NavBar = (props) => {
             </div>
 
         </>
-
-        // <div>
-        //    <Navbar color="faded" light>
-        // <NavbarBrand href="/" className="mr-auto" href="/all-dogs">Furry Friends</NavbarBrand>
-        // <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-        // <Collapse isOpen={!collapsed} navbar>
-        //             <Nav navbar>
-        //                 <NavItem>
-        //                     <NavLink href="/all-dogs">All Dogs</NavLink>
-        //                 </NavItem>
-        //                 <NavItem>
-        //                     <NavLink href={`/user-profile/${parseInt(localStorage.getItem("furry_user"))}`}>
-        //                         My Profile
-        //                     </NavLink>
-        //                 </NavItem>
-        //                 <NavItem>
-        //                     <NavLink href="/events">Events</NavLink>
-        //                 </NavItem>
-        //                 <NavItem>
-        //                     <NavLink href="/blog-posts">Dog Blogs</NavLink>
-        //                 </NavItem>
-        //                 <NavItem>
-        //                     <NavLink
-        //                         href="/login"" onClick={() => {
-        //                             localStorage.removeItem("furry_user");
-        //                         }}
-        //                     >
-        //                         Logout
-        //                     </NavLink>
-        //                 </NavItem>
-        //             </Nav>
-        //         </Collapse>
-        //     </Navbar>
-        // </div>
-
-        // <ul className="navbar">
-        //     <li className="navbar__item active">
-        //         <Link className="navbar__link" to="/all-dogs">All Dogs</Link>
-        //     </li>
-        //     <li className="navbar__item">
-        //         <Link className="navbar__link" to={`/user-profile/${parseInt(localStorage.getItem("furry_user"))}`}> My Profile </Link>
-        //     </li>
-        //     <li className="navbar__item active">
-        //         <Link className="navbar__link" to="/events">Events</Link>
-        //     </li>
-        //     <li className="navbar__item active">
-        //         <Link className="navbar__link" to="/blog-posts">Dog Blogs</Link>
-        //     </li>
-        //     <li className="navbar__item">
-        //         <Link className="navbar__link" to="#"
-        //             onClick={
-        //                 () => {
-        //                     localStorage.removeItem("furry_user")
-        //                 }
-        //             }>
-        //             Logout
-        //         </Link>
-        //     </li>
-        // </ul>
-    );
-};
+    )
+}

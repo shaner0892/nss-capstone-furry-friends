@@ -32,6 +32,13 @@ export const Login = () => {
 
     return (
         <main className="container--login">
+            <div class="header">
+                <img className="logo" src="https://res.cloudinary.com/dfxsl6a2c/image/upload/v1647634780/Yellow_Brown_Petshop_Point_Logo_l7v1l2.png" alt="logo" />
+                <h1 class="title">Nashville Furry Friends </h1>
+            </div>
+            <div>
+
+            <h5>Helping foster dogs find their furever homes since 2022</h5>
             <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
@@ -39,7 +46,6 @@ export const Login = () => {
 
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Nashville Furry Friends</h1>
                     <h3>Please sign in</h3>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
@@ -59,6 +65,7 @@ export const Login = () => {
             <section className="link--register">
                 <Link to="/register">Not a member yet?</Link>
             </section>
+            </div>
         </main>
     )
 }

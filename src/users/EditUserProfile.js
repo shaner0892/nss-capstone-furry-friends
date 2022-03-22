@@ -51,27 +51,26 @@ export const EditUserProfile = (props) => {
                 <fieldset>
                     <label htmlFor="firstName"> First Name: </label>
                     <input value={user.firstName} onChange={updateUser}
-                        type="text" id="firstName" className="form-control"
+                        type="text" className="form-control"
                         placeholder="Enter your first name" required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="lastName"> Last Name: </label>
                     <input value={user.lastName} onChange={updateUser}
-                        type="text" id="lastName" className="form-control"
+                        type="text" className="form-control"
                         placeholder="Enter your last name" required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="email"> Email address: </label>
-                    <input value={user.email} onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
+                    <input value={user.email} onChange={updateUser} type="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="foster">Do you currently foster dogs? </label>
-                    <input checked={user.foster ? "checked" : ""} type="checkbox"
-                        className="check" onChange={updateUser}/>
+                    <input checked={user.foster ? "checked" : ""} type="checkbox" className="check" onChange={updateUser}/>
                 </fieldset>
                 <fieldset>
                     <label htmlFor="bio"> About me: </label>
-                    <input value={user.bio} onChange={updateUser} type="text" id="bio" className="form-control" placeholder="Tell us about yourself" />
+                    <textarea id="bio" value={user.bio} cols="40" rows="5" onChange={updateUser} type="text" className="form-control" ></textarea>
                 </fieldset>
                 <fieldset>
                     <Button id="btn" color="success" outline type="submit"> Save </Button>
