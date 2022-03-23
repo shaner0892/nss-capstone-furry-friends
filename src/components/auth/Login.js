@@ -23,7 +23,7 @@ export const Login = () => {
             .then(exists => {
                 if (exists) {
                     localStorage.setItem("furry_user", exists.id)
-                    history.push("/all-dogs")
+                    history.push("/home")
                 } else {
                     existDialog.current.showModal()
                 }
