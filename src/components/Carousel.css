@@ -1,7 +1,19 @@
 h3 {
-    background-color: rgba(240, 248, 255, 0);
+    background-color: rgba(255, 240, 240, 0);
 }
 
 .carousel-caption {
     background-color: rgba(240, 248, 255, 0);
+    height: 8px;
+    width: 120px;
+    color: rgba(240, 248, 255, 0.555);
+    margin-left: auto;
+    margin-right: auto;}
+
+.carousel-indicators {
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.d-block {
+    margin: 50px 0px;
 }

@@ -4,21 +4,9 @@ import { useHistory } from "react-router";
 
 //this module is responsible for displaying all of the dogs
 
-export const AllDogs = () => {
+export const AllDogs = ({filterDogs}) => {
     //useState is a hook, it takes a single argument and returns an array
-    const [dogs, modifyDogs] = useState([])
     const history = useHistory()
-
-    //get all the dog info from the Api and update when it changes
-    useEffect(
-        () => {
-            getAllDogs()
-                .then((dogArray) => {
-                    modifyDogs(dogArray)
-                })
-        },
-        []
-    )
 
     return (
         <>
@@ -29,7 +17,7 @@ export const AllDogs = () => {
             
             <section class="dogList">
             {
-                dogs.map(
+                filterDogs.map(
                     (dog) => {
                         return <section class="dog" key={`dog--${dog.id}`}> 
                             <img src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)}/>

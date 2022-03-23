@@ -49,33 +49,34 @@ h4, h5 {
   margin-right: auto;
 } 
 
+img {
+  height: 50%;
+  width: 100%
+}
+
 .homeWelcome {
   font-size: 50px;
   margin: 30px;
 }
 
-img {
-  height: 50%;
-  width: 100%
+.row1 {
+  display: flex;
+  flex-direction: row;
 }
-/* 
-.homePage {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-} */
 
-.c1 {
+.row2 {
   display: flex;
   flex-direction: row;
+}
+
+.dogSection {
+  margin-bottom: 100px;
 }
 
 #homeDog {
   width: 100%;
   margin: 10px;
   text-align: center;
-  /* display: flex;
-  flex-direction: row; */
 }
 
 .homeDogPic {
@@ -85,40 +86,48 @@ img {
   height:fit-content
 }
 
-.c2 {
-  display: flex;
-  flex-direction: row;
+.subtitle {
+  font-size: 18px;
+  background-color:rgba(240, 223, 147, 0.795) ;
+  color: rgba(22, 52, 107, 0.932);
+  text-align: center;
 }
 
-#homeEvent {
-  width: 100%;
+.eventSection {
+  width: 33%;
   margin: 10px;
 }
 
-.c3 {
+.eventRow {
   display: flex;
   flex-direction: row;
 }
 
-#homePost {
-  width: 100%;
+.postSection {
+  width: 65%;
+  margin: 10px;
+}
+
+.homePost {
+  width: 32%;
+  margin: 10px;
   height: min-content;
+}
+
+.homeTopic1 {
+  width: 100%;
+  justify-content: center;
   margin: 10px;
 }
 
-.homeTopic {
+.homeTopic2 {
   width: 100%;
   justify-content: center;
 }
 
 #homeTitle {
-  font-size: 30px;
+  font-size: 25px;
 }
-
-/* .r2 {
-  display: flex;
-  flex-direction: row;
-} */
 
 .dogList {
   display: flex;
@@ -212,3 +221,23 @@ img {
   margin: 10px;
 }
 
+.dogForm {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: row;  
+
+}
+/* 
+.filter-group {
+  margin: 10px;
+} */
+
+.filter-control {
+  margin: 10px;
+
+}

@@ -282,7 +282,7 @@ export const AddDog = () => {
                 </div>
             </fieldset>
             <div>
-                <Button id="btn" color ="success" outline className="btn btn-addDog" onClick={addNewDog} >
+                <Button id="btn" color="success" outline className="btn btn-addDog" onClick={addNewDog} >
                     Submit
                 </Button>
             </div>

@@ -49,11 +49,11 @@ export const UserProfile = () => {
                 <div><b>Current foster:</b> {user.foster? "Yes" : "No"}</div>
                 <div><b>About me:</b> {user.bio}</div>
                 <br></br>
-                <Button id="btn" color ="success" outline onClick={() => history.push(`/edit-user-profile/${parseInt(localStorage.getItem("furry_user"))}`)}> Edit My Profile </Button><br></br>
+                <Button id="btn" color="success" outline onClick={() => history.push(`/edit-user-profile/${parseInt(localStorage.getItem("furry_user"))}`)}> Edit My Profile </Button><br></br>
             </section>
 
             <h3>My Dogs</h3>
-                <Button id="rightBtn" color ="success" outline onClick={() => history.push("/add-dog")}> Add New Dog </Button>
+                <Button id="rightBtn" color="success" outline onClick={() => history.push("/add-dog")}> Add New Dog </Button>
             {/* use map array method to display each dog for the user 
             make the name clickable and show the individual profile
             add an edit and delete button*/}

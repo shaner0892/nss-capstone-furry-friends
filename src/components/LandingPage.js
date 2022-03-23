@@ -32,7 +32,7 @@ export const LandingPage = () => {
             (dog) => {
                 return <section key={`dog--${dog.id}`} id="homeDog">
                     <img class="homeDogPic" src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)} />
-                    <div><b>{dog.name}</b> </div>
+                    <div className="subtitle"><b>{dog.name}</b> </div>
                 </section>
             }
         )
@@ -53,7 +53,7 @@ export const LandingPage = () => {
     const topEvents = () => {
         return events.slice(0, 1).map(
             (event) => {
-                return <section class="eventList" id="homeEvent" key={`event--${event.id}`}>
+                return <section class="homeEvent" key={`event--${event.id}`}>
                     <div id="homeTitle"><b>{event.title} </b></div>
                     <div><b>Date:</b> {event.date}</div>
                     <div><b>Time:</b> {event.time}</div>
@@ -80,12 +80,12 @@ export const LandingPage = () => {
     const topPosts = () => {
         return blogPosts.slice(0, 3).map(
             (post) => {
-                return <section id="homePost" key={`blogPost--${post.id}`}>
+                return <section class="homePost" key={`blogPost--${post.id}`}>
                     <img src={post.imageURL} />
-                    <h5 id="homeTitle">{post.title} </h5>
-                    <div>Author: {post.user?.firstName}</div>
+                    <div className="subtitle"><b>{post.title}</b> </div>
+                    {/* <div>Author: {post.user?.firstName}</div>
                     <div>Date: {post.date}</div>
-                    <div>{post.entryText}</div>
+                    <div>{post.entryText}</div> */}
                 </section>
             }
         )
@@ -96,29 +96,37 @@ export const LandingPage = () => {
         //add "welcome" and preview of pages
         <>
             <DogCarousel />
-            <h2 class="homeWelcome">Welcome!</h2>
+            {/* <h2 class="homeWelcome">Welcome!</h2> */}
             <section className="homePage">
-                <h4 className="homeTopic">Adoptable Dogs</h4>
-                <div className="c1" >
-                    {
-                        topDogs()
-                    },
+                <div className="dogSection">
+                    <h3 className="homeTopic1">Adoptable Dogs</h3>
+                    <div className="row1" >
+                        {
+                            topDogs()
+                        },
+                    </div>
+                    <Button id="rightBtn" color="success" outline onClick={() => history.push(`/all-dogs`)}> See all pups </Button>
                 </div>
-                <Button id="rightBtn" color="success" outline onClick={() => history.push(`/all-dogs`)}> See all pups </Button>
-                <h4 className="homeTopic">Next Event</h4>
-                <div className="c2">
-                    {
-                        topEvents()
-                    },
+                <div className="row2">
+                    <div className="eventSection">
+                        <h3 className="homeTopic2">Next Event</h3>
+                        {
+                            topEvents()
+                        },
+
+                        <Button id="rightBtn" color="success" outline onClick={() => history.push(`/events`)}> See all events </Button>
+                    </div>
+                    <div className="postSection">
+                        <h3 className="homeTopic2">Recent Posts</h3>
+                        <div className="eventRow">
+
+                        {
+                            topPosts()
+                        }
+                    </div>
+                        </div>
                 </div>
-                <Button id="rightBtn" color="success" outline onClick={() => history.push(`/events`)}> See all events </Button>
-                <h4 className="homeTopic">Recent Posts</h4>
-                <div className="c2" >
-                    {
-                        topPosts()
-                    }
-                </div>
-                <Button id="rightBtn" color="success" outline onClick={() => history.push(`/blog-posts`)}> See all dog blogs </Button>
+                    <Button id="rightBtn" color="success" outline onClick={() => history.push(`/blog-posts`)}> See all dog blogs </Button>
             </section>
         </>
 
