@@ -3,6 +3,7 @@ import { getAllDogs, getAllEvents, getAllBlogPosts } from "../ApiManager";
 import { useHistory } from "react-router";
 import { Button } from "reactstrap"
 import { DogCarousel } from "./Carousel";
+import "./LandingPage.css"
 
 export const LandingPage = () => {
     //useState is a hook, it takes a single argument and returns an array
@@ -31,8 +32,8 @@ export const LandingPage = () => {
         return adoptableDogs.slice(0, 4).map(
             (dog) => {
                 return <section key={`dog--${dog.id}`} id="homeDog">
-                    <img class="homeDogPic" src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)} />
-                    <div className="subtitle"><b>{dog.name}</b> </div>
+                    <img class="homeDogPic" id="zoom" src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)} />
+                    <div className="subtitle">{dog.name} </div>
                 </section>
             }
         )
@@ -54,7 +55,7 @@ export const LandingPage = () => {
         return events.slice(0, 1).map(
             (event) => {
                 return <section class="homeEvent" key={`event--${event.id}`}>
-                    <div id="homeTitle"><b>{event.title} </b></div>
+                    <div id="homeTitle">{event.title}</div>
                     <div><b>Date:</b> {event.date}</div>
                     <div><b>Time:</b> {event.time}</div>
                     <div><b>Location:</b> {event.location}</div>
@@ -82,7 +83,7 @@ export const LandingPage = () => {
             (post) => {
                 return <section class="homePost" key={`blogPost--${post.id}`}>
                     <img src={post.imageURL} />
-                    <div className="subtitle"><b>{post.title}</b> </div>
+                    <div className="subtitle">{post.title} </div>
                     {/* <div>Author: {post.user?.firstName}</div>
                     <div>Date: {post.date}</div>
                     <div>{post.entryText}</div> */}
@@ -93,7 +94,7 @@ export const LandingPage = () => {
 
     return (
         //add carousel
-        //add "welcome" and preview of pages
+        //add "welcome", preview of pages, fostering links
         <>
             <DogCarousel />
             {/* <h2 class="homeWelcome">Welcome!</h2> */}
@@ -105,7 +106,7 @@ export const LandingPage = () => {
                             topDogs()
                         },
                     </div>
-                    <Button id="rightBtn" color="success" outline onClick={() => history.push(`/all-dogs`)}> See all pups </Button>
+                    <Button id="rightBtn" color="success" outline onClick={() => history.push(`/all-dogs`)}> See all dogs </Button>
                 </div>
                 <div className="row2">
                     <div className="eventSection">
@@ -127,6 +128,16 @@ export const LandingPage = () => {
                         </div>
                 </div>
                     <Button id="rightBtn" color="success" outline onClick={() => history.push(`/blog-posts`)}> See all dog blogs </Button>
+                <div className="fosteringSection">
+                    <h5>Interested in fostering? Click on a rescue organization to learn more!</h5>
+                    <ul>
+                        <li><a href="https://nashvillehumane.org/foster">Nashville Humane Association</a></li>
+                        <li><a href="https://www.wagsandwalks.org/foster-nashville">Wags and Walks - Nashville</a></li>
+                        <li><a href="https://www.nashvillepittie.org/foster">Nashville PITTIE</a></li>
+                        <li><a href="https://app.betterimpact.com/PublicOrganization/065a796d-a375-413b-bbd8-eb01a1b2d52d/Gvi/5d8910d3-86a7-4da9-bb6a-d23f70e3ac41/2">Metro Animal Care & Control</a></li>
+                    </ul>
+                </div>
+            
             </section>
         </>
 

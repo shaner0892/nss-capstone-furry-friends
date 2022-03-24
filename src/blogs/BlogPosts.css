@@ -1,0 +1,14 @@
+.blogList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 20px;
+    text-align: center;
+}
+
+.blog {
+    margin: 25px;
+    width: 30%;
+    height: fit-content;
+}

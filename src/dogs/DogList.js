@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getAllDogs, getAllRescues, getAllSizes, getAllAgeRanges } from "../ApiManager";
-import { useHistory } from "react-router";
-import { AdoptableDogs } from "./AdoptableDogs";
 import { AllDogs } from "./AllDogs";
 import "./ToggleBar.css"
 
@@ -10,8 +8,6 @@ import "./ToggleBar.css"
 export const DogList = () => {
     //useState is a hook, it takes a single argument and returns an array
     const [dogs, modifyDogs] = useState([])
-    const history = useHistory()
-    const [toggle, setToggle] = useState(false)
     const [rescues, modifyRescues] = useState([])
     const [sizes, modifySizes] = useState([])
     const [ages, modifyAgeRange] = useState([])
@@ -69,13 +65,13 @@ export const DogList = () => {
     useEffect(
         () => {
             let copy = [...dogs]
+            //add if statements for each filter and update copy
             if (filter.sex && filter.sex != "Both") {
                 copy = sort("sex", copy)
             }
             if (filter.adoptable === true) {
                 copy = sort("adoptable", copy)
             }
-            //add if statements
             if (filter.ageId && filter.ageId != "All") {
                 copy = sort("ageId", copy)
             }
@@ -89,14 +85,6 @@ export const DogList = () => {
         },
         [filter]
     )
-
-    // const adoptableView = (e) => {
-    //     if (e.target.checked) {
-    //         setToggle(true)
-    //     } else {
-    //         setToggle(false)
-    //     }
-    // }
 
     //each time a selection is made this function is invoked
     //if nothing has been selected filter is an empty object

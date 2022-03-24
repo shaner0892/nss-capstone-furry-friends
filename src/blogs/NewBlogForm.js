@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { getUserDogs } from "../ApiManager";
+import { getUserDogs, postBlog } from "../ApiManager";
 import UploadImages from "../UploadImage";
 import { Button } from "reactstrap";
 
@@ -28,7 +28,7 @@ export const AddBlogPost = () => {
         entryText: "",
         dogId: 0,
         date: "",
-        imageURL: ""
+        imageURL: "https://res.cloudinary.com/dfxsl6a2c/image/upload/v1648139596/default_dxztcl.jpg"
     });
 
     const addNewBlogPost = (evt) => {
@@ -44,18 +44,7 @@ export const AddBlogPost = () => {
             imageURL: blogPost.imageURL
         }
 
-        //POST the newDog object from above to the API
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            //you cannot send JavaScript objects across HTTP so you have to send it in strings/stringify
-            body: JSON.stringify(newPost)
-        }
-
-        //fetch the new list of dogs from the API and take the user to their profile page
-        return fetch("http://localhost:8088/blogPosts?_expand=user&_expand=dog", fetchOption)
+        postBlog(newPost)
             .then(() => history.push(`/blog-posts`))
     }
     //this will be the form you display, you need to capture user input and save to new object
@@ -102,7 +91,7 @@ export const AddBlogPost = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="entryText">Post: </label>
-                    <input
+                    <textarea id="form-bio" cols="40" rows="5"
                         required autoFocus
                         type="text"
                         className="form-control"
@@ -113,7 +102,7 @@ export const AddBlogPost = () => {
                                 copy.entryText = evt.target.value
                                 updateBlogPost(copy)
                             }
-                        } />
+                        } ></textarea>
                 </div>
             </fieldset>
             <fieldset>

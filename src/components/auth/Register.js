@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
 import "./Login.css"
 import { Button } from "reactstrap"
+import { getUserEmailReg, postRegistration } from "../../ApiManager"
 
 //this is the registration form for new users
 
@@ -11,8 +12,7 @@ export const Register = (props) => {
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/users?email=${user.email}`)
-            .then(res => res.json())
+        return getUserEmailReg(user)
             .then(user => !!user.length)
     }
     const handleRegister = (e) => {
@@ -20,14 +20,7 @@ export const Register = (props) => {
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    fetch("http://localhost:8088/users", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(user)
-                    })
-                        .then(res => res.json())
+                    postRegistration(user)
                         //this creates a new user and stores it in localStorage
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {

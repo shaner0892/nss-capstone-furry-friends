@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { Button } from "reactstrap"
+import { getCurrentUser, putEditUser } from "../ApiManager"
 
 //this is the edit user profile page
 
@@ -11,21 +12,14 @@ export const EditUserProfile = (props) => {
     
     //this function fetches the current user from local storage and invokes the setUser function to assign them to user
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/users/${parseInt(localStorage.getItem("furry_user"))}`)
-            .then(res => res.json())
+        getCurrentUser()
             .then(user => setUser(user))
     }
     //use PUT method to update/edit the existing object
     useEffect(existingUserCheck, [])
     const editUser = (evt) => {
         evt.preventDefault()
-        fetch(`http://localhost:8088/users/${user.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(user)
-        })
+        putEditUser(user)
             //.push routes you to a new page
             .then(() => history.push(`/user-profile/${user.id}`))
     }
@@ -45,28 +39,31 @@ export const EditUserProfile = (props) => {
                 <div>Account with that email address already exists</div>
                 <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
             </dialog>
-
             <form className="form--login" onSubmit={editUser}>
                 <h2 className="h3 mb-3 font-weight-normal">Edit Your Profile</h2>
                 <fieldset>
                     <label htmlFor="firstName"> First Name: </label>
-                    <input value={user.firstName} onChange={updateUser}
-                        type="text" className="form-control"
-                        placeholder="Enter your first name" required autoFocus />
+                    <input id="firstName" value={user.firstName} onChange={updateUser} type="text" className="form-control" required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="lastName"> Last Name: </label>
-                    <input value={user.lastName} onChange={updateUser}
-                        type="text" className="form-control"
-                        placeholder="Enter your last name" required autoFocus />
+                    <input id="lastName" value={user.lastName} onChange={updateUser} type="text" className="form-control" required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="email"> Email address: </label>
-                    <input value={user.email} onChange={updateUser} type="email" className="form-control" placeholder="Email address" required />
+                    <input id="email" value={user.email} onChange={updateUser} type="email" className="form-control" required />
                 </fieldset>
                 <fieldset>
+                    {/* a value is being passed into updateUser whereas this one is checked or not
+                    should I write a separate function in the onChange? */}
                     <label htmlFor="foster">Do you currently foster dogs? </label>
-                    <input checked={user.foster ? "checked" : ""} type="checkbox" className="check" onChange={updateUser}/>
+                    <input id="foster" checked={user.foster ? "checked" : ""} type="checkbox" className="check" onChange={
+                            (evt) => {
+                                const copy = {...user}
+                                copy.foster = evt.target.checked
+                                setUser(copy)
+                            }
+                        } />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="bio"> About me: </label>

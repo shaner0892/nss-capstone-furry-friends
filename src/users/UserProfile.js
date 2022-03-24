@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { deleteDog, getUserDogs } from "../ApiManager";
 import { Button } from "reactstrap";
 
@@ -62,7 +62,7 @@ export const UserProfile = () => {
                     user.dogs.map(
                         (dog) => {
                             return <section class="dog" key={`dog--${dog.id}`}>
-                                        <img src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)}/>
+                                        <img class="zoom" src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)}/>
                                         <p>{dog.name}</p>
                                         <Button id="btn" color ="success" outline onClick={() => history.push(`/edit-dog-profile/${dog.id}`)}> Edit Profile </Button><br></br>
                                         <Button id="btn" color ="success" outline onClick={() => {removeDog(dog.id)}}> Delete Profile </Button>

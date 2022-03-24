@@ -1,17 +1,10 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import "./NavBar.css"
-// import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, NavLink } from "reactstrap";
 import { Nav, NavItem, NavLink } from 'reactstrap';
 
-// This is a Presentation Component. Directly expresses HTML.
-// NavBar includes: my dogs, all dogs, and logout (stretch goal: events and blog posts)
+// NavBar includes: my dogs, all dogs, events, blog posts, and logout 
 
 export const NavBar = (props) => {
-    // const [collapsed, setCollapsed] = useState(true);
-
-    // const toggleNavbar = () => setCollapsed(!collapsed);
-
     return (
         <>
             <div class="header">

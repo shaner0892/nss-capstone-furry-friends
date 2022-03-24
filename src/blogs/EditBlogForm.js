@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router";
-import { getCurrentBlogPost, getUserDogs } from "../ApiManager";
+import { getCurrentBlogPost, getUserDogs, putEditBlog } from "../ApiManager";
 import UploadImages from "../UploadImage";
 import { Button } from "reactstrap";
 
@@ -48,18 +48,7 @@ export const EditBlogPost = () => {
             imageURL: blogPost.imageURL
         }
 
-        //PUT the editedPost object from above to the API
-        const fetchOption = {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            //you cannot send JavaScript objects across HTTP so you have to send it in strings/stringify
-            body: JSON.stringify(editedPost)
-        }
-
-        //fetch the new list of dogs from the API and take the user to their profile page
-        return fetch(`http://localhost:8088/blogPosts/${blogPostId}`, fetchOption)
+        putEditBlog(blogPostId, editedPost)
             .then(() => history.push("/blog-posts"))
     }
     //this will be the form you display, you need to capture user input and save to new object
@@ -105,7 +94,7 @@ export const EditBlogPost = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="entryText">Post: </label>
-                    <input value={blogPost.entryText}
+                    <textarea id="form-bio" cols="40" rows="5" value={blogPost.entryText}
                         required autoFocus
                         type="text"
                         className="form-control"
@@ -115,7 +104,7 @@ export const EditBlogPost = () => {
                                 copy.entryText = evt.target.value
                                 updateBlogPost(copy)
                             }
-                        } />
+                        } ></textarea>
                 </div>
             </fieldset>
             <fieldset>

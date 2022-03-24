@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllEvents } from "../ApiManager";
+import ".//Events.css"
 
 //this module is responsible for displaying all of the events
 
@@ -21,21 +22,19 @@ export const EventList = () => {
     return (
         <>
             {/* //iterate events using map array method and convert them from objects to html using jsx
-            //need to display an abbreviated bio (name, age, adoptable) 
-            //need to display their picture 
-            //use dynamic routing to create a link on each event's name to access their individual profile*/}
+            //need to display title, date, time, location, about, host*/}
             <h2>Upcoming Events</h2>
             {
                 events.map(
                     (event) => {
                         return <section class="eventList" key={`event--${event.id}`}> 
-                        <h4>{event.title} </h4>
-                        <div><b>Date:</b> {event.date}</div>
-                        <div><b>Time:</b> {event.time}</div>
-                        <div><b>Location:</b> {event.location}</div>
-                        <div><b>About:</b> {event.description}</div>
-                        <div><b>Hosted by:</b> {event.rescue?.name}</div>
-                        <br></br></section>
+                            <h4>{event.title} </h4>
+                            <div><b>Date:</b> {event.date}</div>
+                            <div><b>Time:</b> {event.time}</div>
+                            <div><b>Location:</b> {event.location}</div>
+                            <div><b>About:</b> {event.description}</div>
+                            <div><b>Hosted by:</b> {event.rescue?.name}</div>
+                        </section>
                     }
                 )
             }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { getAllAgeRanges, getAllRescues, getAllSizes } from "../ApiManager";
+import { getAllAgeRanges, getAllRescues, getAllSizes, getCurrentUser, postDog } from "../ApiManager";
 import UploadImages from "../UploadImage";
 import { Button } from "reactstrap";
 
@@ -10,11 +10,11 @@ export const AddDog = () => {
     const [sizes, modifySizes] = useState([])
     const [ages, modifyAgeRange] = useState([])
     const [user, setUser] = useState({})    
+    const history = useHistory()
 
     //this function fetches the current user from local storage and invokes the setUser function to update the user object
     const currentUser = () => {
-        return fetch(`http://localhost:8088/users/${parseInt(localStorage.getItem("furry_user"))}`)
-            .then(res => res.json())
+        getCurrentUser()
             .then(user => setUser(user))
     }
 
@@ -67,10 +67,8 @@ export const AddDog = () => {
         goodWDogs: false,
         goodWCats: false,
         sizeId: 0,
-        imageURL: ""
+        imageURL: "https://res.cloudinary.com/dfxsl6a2c/image/upload/v1648139596/default_dxztcl.jpg"
     });
-    //need clarification on this ***************
-    const history = useHistory()
 
     const addNewDog = (evt) => {
         //capture the evt (event) and prevent the default (form submitted and reset) from happening
@@ -91,18 +89,7 @@ export const AddDog = () => {
             imageURL: dog.imageURL
         }
 
-        //POST the newDog object from above to the API
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            //you cannot send JavaScript objects across HTTP so you have to send it in strings/stringify
-            body: JSON.stringify(newDog)
-        }
-
-        //fetch the new list of dogs from the API and take the user to their profile page
-        return fetch("http://localhost:8088/dogs?_expand=user&_expand=rescue&_expand=size", fetchOption)
+        postDog(newDog)
             .then(() => history.push(`/user-profile/${user.id}`))
     }
     //this will be the form you display, you need to capture user input and save to new object

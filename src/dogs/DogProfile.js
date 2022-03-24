@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { getCurrentDog } from "../ApiManager";
 
 // this module is responsible for displaying the selected dog's individual profile
 
@@ -11,8 +12,7 @@ export const DogProfile = () => {
     //fetch the information for the dog that was clicked on
     useEffect(
         () => {
-            return fetch(`http://localhost:8088/dogs/${dogId}?_expand=user&_expand=rescue&_expand=size&_expand=age`)
-                .then(res => res.json()) 
+            getCurrentDog(dogId)
                 .then((dogObj) => {
                     modifyDog(dogObj)
                 })

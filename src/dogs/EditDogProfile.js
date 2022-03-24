@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { getAllAgeRanges, getAllRescues, getAllSizes, getCurrentDog } from "../ApiManager";
+import { getAllAgeRanges, getAllRescues, getAllSizes, getCurrentDog, putEditDog } from "../ApiManager";
 import UploadImages from "../UploadImage";
 import { Button } from "reactstrap";
 
@@ -13,6 +13,7 @@ export const EditDogProfile = () => {
     const history = useHistory()
     const [dog, updateDog] = useState({});
     const {dogId} = useParams()
+
     //add useEffect
     //this is watching for updates to the rescues and sizes array and fetches them from the API, it updates locations to = the locations array from the API
     useEffect(
@@ -72,22 +73,8 @@ export const EditDogProfile = () => {
             imageURL: dog.imageURL
         }
 
-        //PUT the editedDog object from above to the API
-        const fetchOption = {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            //you cannot send JavaScript objects across HTTP so you have to send it in strings/stringify
-            body: JSON.stringify(editedDog)
-        }
-
-        //fetch the dog from the API and update it
-            //.push routes you to a new page
-        return fetch(`http://localhost:8088/dogs/${dog.id}`, fetchOption)
-            .then(() => {
-                history.push(`/dog-profile/${dog.id}`)
-            })
+        putEditDog(dog, editedDog)
+            .then(() => history.push(`/dog-profile/${dog.id}`))
     }
     //this will be the form you display, you need to capture user input and update the dog object
         //add values to each input to display previous user edits

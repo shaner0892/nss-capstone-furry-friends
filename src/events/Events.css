@@ -1,0 +1,9 @@
+.eventList {
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 15px;
+    margin-bottom: 50px;
+    text-align: left;
+    font-size: large;
+    line-height: 30px;
+}

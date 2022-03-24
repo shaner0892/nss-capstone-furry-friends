@@ -1,0 +1,101 @@
+.homeWelcome {
+  font-size: 50px;
+  margin: 30px;
+}
+
+.row1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.row2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.dogSection {
+  margin-bottom: 100px;
+}
+
+#homeDog {
+  width: 100%;
+  margin: 30px 30px 0px 30px;
+  text-align: center;
+  /* object-fit: cover; */
+}
+
+.homeDogPic {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* height: fit-content; */
+  height: 80%;
+  cursor: pointer;
+}
+
+/* if you want the pics to enlarge */
+/* #zoom {
+    padding: 35px;
+    transition: transform .2s; 
+    cursor: pointer;
+}
+  
+#zoom:hover {
+    transform: scale(1.15); 
+} */
+
+.subtitle {
+  font-size: 25px;
+  background-color: rgba(22, 52, 107, 0.932);
+  color: rgb(250, 250, 250);
+  text-align: center;
+}
+
+.eventSection {
+  width: 33%;
+  margin: 10px;
+}
+
+.eventRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.postSection {
+  width: 65%;
+  margin: 10px;
+}
+
+.homePost {
+  width: 32%;
+  margin: 10px;
+  height: min-content;
+}
+
+/* .homeEvent {
+    margin-bottom: 50px;
+  } */
+
+.homeTopic1 {
+  width: 100%;
+  justify-content: center;
+  margin: 10px;
+}
+
+.homeTopic2 {
+  width: 100%;
+  justify-content: center;
+}
+
+#homeTitle {
+  font-size: 23px;
+}
+
+.fosteringSection {
+  width: 50%;
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+}
