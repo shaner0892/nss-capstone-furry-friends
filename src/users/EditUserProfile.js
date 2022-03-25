@@ -57,7 +57,7 @@ export const EditUserProfile = (props) => {
                     {/* a value is being passed into updateUser whereas this one is checked or not
                     should I write a separate function in the onChange? */}
                     <label htmlFor="foster">Do you currently foster dogs? </label>
-                    <input id="foster" checked={user.foster ? "checked" : ""} type="checkbox" className="check" onChange={
+                    <input id="foster" checked={user.foster ? "checked" : ""} type="checkbox" className="box" onChange={
                             (evt) => {
                                 const copy = {...user}
                                 copy.foster = evt.target.checked

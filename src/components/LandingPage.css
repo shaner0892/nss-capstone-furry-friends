@@ -1,7 +1,7 @@
-.homeWelcome {
+/* .homeWelcome {
   font-size: 50px;
   margin: 30px;
-}
+} */
 
 .row1 {
   display: flex;
@@ -14,15 +14,23 @@
 }
 
 .dogSection {
-  margin-bottom: 100px;
+  margin-bottom: 20px;
+  width: 70%;
 }
 
-#homeDog {
+.dogPics {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  margin-bottom: 20px;
+}
+
+.homeDogPicTitle {
   width: 100%;
-  margin: 30px 30px 0px 30px;
+  margin: 30px 20px 0px 20px;
   text-align: center;
   /* object-fit: cover; */
-}
+} 
 
 .homeDogPic {
   display: flex;
@@ -33,17 +41,6 @@
   cursor: pointer;
 }
 
-/* if you want the pics to enlarge */
-/* #zoom {
-    padding: 35px;
-    transition: transform .2s; 
-    cursor: pointer;
-}
-  
-#zoom:hover {
-    transform: scale(1.15); 
-} */
-
 .subtitle {
   font-size: 25px;
   background-color: rgba(22, 52, 107, 0.932);
@@ -53,49 +50,61 @@
 
 .eventSection {
   width: 33%;
-  margin: 10px;
 }
 
-.eventRow {
-  display: flex;
-  flex-direction: row;
+.events {
+  margin: 25px;
 }
 
-.postSection {
-  width: 65%;
-  margin: 10px;
-}
-
-.homePost {
-  width: 32%;
-  margin: 10px;
-  height: min-content;
-}
-
-/* .homeEvent {
-    margin-bottom: 50px;
-  } */
-
-.homeTopic1 {
-  width: 100%;
-  justify-content: center;
-  margin: 10px;
-}
-
-.homeTopic2 {
-  width: 100%;
-  justify-content: center;
-}
-
-#homeTitle {
+.eventTitle {
   font-size: 23px;
 }
 
+.blogPics {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+}
+
+.blogPic {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80%;
+}
+
+.postSection {
+  width: 70%;
+}
+
+.homeBlogPicTitle {
+  width: 32%;
+  margin: 30px 20px 0px 20px;
+}
+
+.blogPics {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  margin: 0px;
+}
+
+.homeTopic {
+  width: 95%;
+  justify-content: center;
+  margin: 10px;
+}
+
+#rightBtn {
+  margin-right: 44px;
+}
+
 .fosteringSection {
-  width: 50%;
+  width: 33%;
 }
 
 ul {
   list-style-type: none;
   text-align: center;
+  margin: 20px;
 }

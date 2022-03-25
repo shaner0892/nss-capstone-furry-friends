@@ -29,10 +29,10 @@ export const LandingPage = () => {
 
     //display only THREE dogs available for adoption with button "see more"
     const topDogs = () => {
-        return adoptableDogs.slice(0, 4).map(
+        return adoptableDogs.slice(0, 3).map(
             (dog) => {
-                return <section key={`dog--${dog.id}`} id="homeDog">
-                    <img class="homeDogPic" id="zoom" src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)} />
+                return <section key={`dog--${dog.id}`} className="homeDogPicTitle">
+                    <img className="homeDogPic" id="zoom" src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)} />
                     <div className="subtitle">{dog.name} </div>
                 </section>
             }
@@ -52,10 +52,10 @@ export const LandingPage = () => {
 
     //display only ONE upcoming event with button "see more"
     const topEvents = () => {
-        return events.slice(0, 1).map(
+        return events.slice(0, 2).map(
             (event) => {
-                return <section class="homeEvent" key={`event--${event.id}`}>
-                    <div id="homeTitle">{event.title}</div>
+                return <section className="homeEvent" key={`event--${event.id}`}>
+                    <div className="eventTitle">{event.title}</div>
                     <div><b>Date:</b> {event.date}</div>
                     <div><b>Time:</b> {event.time}</div>
                     <div><b>Location:</b> {event.location}</div>
@@ -81,8 +81,8 @@ export const LandingPage = () => {
     const topPosts = () => {
         return blogPosts.slice(0, 3).map(
             (post) => {
-                return <section class="homePost" key={`blogPost--${post.id}`}>
-                    <img src={post.imageURL} />
+                return <section className="homeBlogPicTitle" key={`blogPost--${post.id}`}>
+                    <img className="blogPic" src={post.imageURL} />
                     <div className="subtitle">{post.title} </div>
                     {/* <div>Author: {post.user?.firstName}</div>
                     <div>Date: {post.date}</div>
@@ -99,43 +99,46 @@ export const LandingPage = () => {
             <DogCarousel />
             {/* <h2 class="homeWelcome">Welcome!</h2> */}
             <section className="homePage">
-                <div className="dogSection">
-                    <h3 className="homeTopic1">Adoptable Dogs</h3>
-                    <div className="row1" >
-                        {
-                            topDogs()
-                        },
+                <div className="row1">
+                    <div className="dogSection" >
+                        <h3 className="homeTopic">Adoptable Dogs</h3>
+                            <div className="dogPics">
+                                {
+                                    topDogs()
+                                },
+                            </div>
+                        <Button id="rightBtn" color="success" outline onClick={() => history.push(`/all-dogs`)}> See all dogs </Button>
                     </div>
-                    <Button id="rightBtn" color="success" outline onClick={() => history.push(`/all-dogs`)}> See all dogs </Button>
-                </div>
-                <div className="row2">
                     <div className="eventSection">
-                        <h3 className="homeTopic2">Next Event</h3>
-                        {
-                            topEvents()
-                        },
-
+                        <h3 className="homeTopic">Upcoming Events</h3>
+                            <div className="events">
+                                {
+                                    topEvents()
+                                },
+                            </div>
                         <Button id="rightBtn" color="success" outline onClick={() => history.push(`/events`)}> See all events </Button>
                     </div>
-                    <div className="postSection">
-                        <h3 className="homeTopic2">Recent Posts</h3>
-                        <div className="eventRow">
-
-                        {
-                            topPosts()
-                        }
-                    </div>
-                        </div>
                 </div>
-                    <Button id="rightBtn" color="success" outline onClick={() => history.push(`/blog-posts`)}> See all dog blogs </Button>
-                <div className="fosteringSection">
-                    <h5>Interested in fostering? Click on a rescue organization to learn more!</h5>
-                    <ul>
-                        <li><a href="https://nashvillehumane.org/foster">Nashville Humane Association</a></li>
-                        <li><a href="https://www.wagsandwalks.org/foster-nashville">Wags and Walks - Nashville</a></li>
-                        <li><a href="https://www.nashvillepittie.org/foster">Nashville PITTIE</a></li>
-                        <li><a href="https://app.betterimpact.com/PublicOrganization/065a796d-a375-413b-bbd8-eb01a1b2d52d/Gvi/5d8910d3-86a7-4da9-bb6a-d23f70e3ac41/2">Metro Animal Care & Control</a></li>
-                    </ul>
+                <div className="row2">
+                    <div className="postSection">
+                        <h3 className="homeTopic">Recent Posts</h3>
+                            <div className="blogPics">
+                                {
+                                    topPosts()
+                                }
+                            </div>
+                        <Button id="rightBtn" color="success" outline onClick={() => history.push(`/blog-posts`)}> See all dog blogs </Button>
+                    </div>
+                    <div className="fosteringSection">
+                        <h3 className="homeTopic">Join a Foster Roster</h3>
+                        <ul>
+                            <p>Interested in fostering? Click on a rescue organization to learn more!</p>
+                            <li><a href="https://nashvillehumane.org/foster">Nashville Humane Association</a></li>
+                            <li><a href="https://www.wagsandwalks.org/foster-nashville">Wags and Walks - Nashville</a></li>
+                            <li><a href="https://www.nashvillepittie.org/foster">Nashville PITTIE</a></li>
+                            <li><a href="https://app.betterimpact.com/PublicOrganization/065a796d-a375-413b-bbd8-eb01a1b2d52d/Gvi/5d8910d3-86a7-4da9-bb6a-d23f70e3ac41/2">Metro Animal Care & Control</a></li>
+                        </ul>
+                    </div>
                 </div>
             
             </section>
