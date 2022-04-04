@@ -21,9 +21,7 @@ export const DogProfile = () => {
     )
 
     return (
-        // need to display all info: name, age, gender, adoptable, rescue, good with kids/dogs/cats, size, and bio
-        // need to display picture(s)
-        // need to display how to contact about dog (display rescue/email and user/email)
+        // need to display all info: name, age, gender, adoptable, rescue, good with kids/dogs/cats, size, bio, and picture
         // use a ternary statement to display contact info IF they are adoptable
         <>
         <h2>All about {dog.name}!</h2>

@@ -40,8 +40,8 @@ export const UserProfile = () => {
 
     return (
         <>
-            {/* //display user's name and bio, add an edit button */}
-            {/* //display add new dog button, <Link> to take to NewDogForm*/}
+            {/* display user's name and bio, add an edit button */}
+            {/* display add new dog button that pushes to NewDogForm*/}
             <h2>{user.firstName}'s Page</h2>
             <section className="userProfile">
                 <div><b>Name:</b> {user.firstName} {user.lastName}</div>

@@ -20,8 +20,6 @@ body {
 .logo {
   height: 110px;
   width: 110px;
-  /* display: block; 
-  position: relative; */
   margin: 10px;
   margin-left: 25px;
 }
@@ -32,8 +30,7 @@ h1 {
   text-align: center;
   font-family: 'Ohayou Christmas', script;
   width: 100%;
-  /* centers it \/ */
-  position:absolute;
+  position: absolute;
 }
 
 h2 {
@@ -72,12 +69,10 @@ img {
 }
 
 .dogProfile {
-  /* border: 2px solid black; */
   padding: 10px;
   margin: 15px;
   width: 50%;
   text-align: center;
-  /* display: flex */
   margin-left: auto;
   margin-right: auto;
 }
@@ -90,12 +85,6 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
-
-/* #dogListPics {
-  border: 3px solid black;
-  width: 100%;
-  height: 90%;
-} */
 
 .userProfile {
   text-align: center;
@@ -137,10 +126,6 @@ img {
   flex-direction: row;  
 
 }
-/* 
-.filter-group {
-  margin: 10px;
-} */
 
 .filter-control {
   margin: 10px;
@@ -148,7 +133,7 @@ img {
 
 .zoom {
   padding: 35px;
-  transition: transform .2s; /* Animation */
+  transition: transform .2s; 
   cursor: pointer;
 }
 

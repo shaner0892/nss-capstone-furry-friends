@@ -87,7 +87,6 @@ export const DogList = () => {
     )
 
     //each time a selection is made this function is invoked
-    //if nothing has been selected filter is an empty object
     //if a filter has been selected it adds a property to the object with the value of the selection (ex: copy.ageId = 2)
     const sortDogs = (e) => {
         let copy = { ...filter }
@@ -101,10 +100,6 @@ export const DogList = () => {
 
     return (
         <>
-            {/* //iterate dogs using map array method and convert them from objects to html using jsx
-            //need to display an abbreviated bio (name, age, adoptable) 
-            //need to display their picture 
-            //use dynamic routing to create a link on each dog's name to access their individual profile*/}
             {/* Add filters for user to sort by adoptable, sex, age, size, and rescue org */}
             <h2>Furry Friends</h2>
             <form className="dogForm">
