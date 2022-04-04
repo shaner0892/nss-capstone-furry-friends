@@ -54,8 +54,7 @@ export const EditUserProfile = (props) => {
                     <input id="email" value={user.email} onChange={updateUser} type="email" className="form-control" required />
                 </fieldset>
                 <fieldset>
-                    {/* a value is being passed into updateUser whereas this one is checked or not
-                    should I write a separate function in the onChange? */}
+                    {/* a value is being passed into updateUser whereas this one is checked or not, write a separate function in the onChange */}
                     <label htmlFor="foster">Do you currently foster dogs? </label>
                     <input id="foster" checked={user.foster ? "checked" : ""} type="checkbox" className="box" onChange={
                             (evt) => {

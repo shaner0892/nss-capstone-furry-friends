@@ -21,7 +21,7 @@
 .dogPics {
   display: flex;
   flex-direction: row;
-  width: 98%;
+  width: 96%;
   margin-bottom: 20px;
 }
 
@@ -53,17 +53,13 @@
 }
 
 .events {
-  margin: 25px;
+  margin: 20px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .eventTitle {
   font-size: 23px;
-}
-
-.blogPics {
-  display: flex;
-  flex-direction: row;
-  width: 98%;
 }
 
 .blogPic {
@@ -85,7 +81,7 @@
 .blogPics {
   display: flex;
   flex-direction: row;
-  width: 98%;
+  width: 96%;
   margin: 0px;
 }
 
@@ -96,7 +92,7 @@
 }
 
 #rightBtn {
-  margin-right: 44px;
+  margin-right: 68px;
 }
 
 .fosteringSection {
@@ -107,4 +103,5 @@ ul {
   list-style-type: none;
   text-align: center;
   margin: 20px;
+  padding: 0px !important;
 }

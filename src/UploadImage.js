@@ -22,7 +22,7 @@ export default function UploadImages({obj, update}) {
 
     return (
         <>
-            <Button id="uploadbtn" color ="success" outline type="file" onClick={showWidget} >Upload an image</Button>
+            <Button id="uploadBtn" color="success" outline type="file" onClick={showWidget} >Upload an image</Button>
             <p>{uploadedImage}</p>
         </>
     )

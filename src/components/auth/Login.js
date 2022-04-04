@@ -31,9 +31,9 @@ export const Login = () => {
 
     return (
         <main className="container--login">
-            <div class="header">
+            <div className="header">
                 <img className="logo" src="https://res.cloudinary.com/dfxsl6a2c/image/upload/v1647634780/Yellow_Brown_Petshop_Point_Logo_l7v1l2.png" alt="logo" />
-                <h1 class="title">Nashville Furry Friends </h1>
+                <h1 className="title">Nashville Furry Friends </h1>
             </div>
             <div>
 

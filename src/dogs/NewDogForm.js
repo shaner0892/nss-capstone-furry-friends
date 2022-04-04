@@ -117,14 +117,14 @@ export const AddDog = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="sex">Sex: </label>
-                        <input class="radio" type="radio" name="sex" value="Male" onChange={
+                        <input className="radio" type="radio" name="sex" value="Male" onChange={
                             (evt) => {
                                 const copy = {...dog}
                                 copy.sex = evt.target.value
                                 updateDog(copy)
                             }
                         }/>Male
-                        <input class="radio" type="radio" name="sex" value="Female" onChange={
+                        <input className="radio" type="radio" name="sex" value="Female" onChange={
                             (evt) => {
                                 const copy = {...dog}
                                 copy.sex = evt.target.value

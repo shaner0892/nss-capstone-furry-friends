@@ -12,7 +12,7 @@ export const AllDogs = ({filterDogs}) => {
             //need to display an abbreviated bio (name, age, adoptable) 
             //need to display their picture, when user clicks on a picture they should be rerouted to their individual profile*/}
             
-            <section class="dogList">
+            <section className="dogList">
             {
                 filterDogs.map(
                     (dog) => {

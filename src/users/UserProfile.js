@@ -43,7 +43,7 @@ export const UserProfile = () => {
             {/* //display user's name and bio, add an edit button */}
             {/* //display add new dog button, <Link> to take to NewDogForm*/}
             <h2>{user.firstName}'s Page</h2>
-            <section class="userProfile">
+            <section className="userProfile">
                 <div><b>Name:</b> {user.firstName} {user.lastName}</div>
                 <div><b>Email:</b> {user.email}</div>
                 <div><b>Current foster:</b> {user.foster? "Yes" : "No"}</div>
@@ -57,12 +57,12 @@ export const UserProfile = () => {
             {/* use map array method to display each dog for the user 
             make the name clickable and show the individual profile
             add an edit and delete button*/}
-            <section class="dogList">
+            <section className="dogList">
                 {
                     user.dogs.map(
                         (dog) => {
-                            return <section class="dog" key={`dog--${dog.id}`}>
-                                        <img class="zoom" src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)}/>
+                            return <section className="dog" key={`dog--${dog.id}`}>
+                                        <img className="zoom" src={dog.imageURL} onClick={() => history.push(`/dog-profile/${dog.id}`)}/>
                                         <p>{dog.name}</p>
                                         <Button id="btn" color ="success" outline onClick={() => history.push(`/edit-dog-profile/${dog.id}`)}> Edit Profile </Button><br></br>
                                         <Button id="btn" color ="success" outline onClick={() => {removeDog(dog.id)}}> Delete Profile </Button>

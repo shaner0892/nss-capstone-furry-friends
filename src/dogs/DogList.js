@@ -110,9 +110,9 @@ export const DogList = () => {
             <form className="dogForm">
                 <p><b>Filter Dogs</b></p>
                 <p id="toggleText">Only show dogs available for adoption:</p>
-                <label class="switch">
+                <label className="switch">
                     <input name="adoptable" type="checkbox" onClick={sortDogs} />
-                    <span class="slider round"></span>
+                    <span className="slider round"></span>
                 </label>
                 <section className="filter-section">
                     <fieldset>

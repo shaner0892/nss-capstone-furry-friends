@@ -7,7 +7,10 @@ import { getUserEmailReg, postRegistration } from "../../ApiManager"
 //this is the registration form for new users
 
 export const Register = (props) => {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({
+        foster: false,
+        bio: ""
+    })
     const conflictDialog = useRef()
     const history = useHistory()
 
@@ -49,7 +52,7 @@ export const Register = (props) => {
             </dialog>
             <div class="header">
                 <img className="logo" src="https://res.cloudinary.com/dfxsl6a2c/image/upload/v1647634780/Yellow_Brown_Petshop_Point_Logo_l7v1l2.png" alt="logo" />
-                <h1 class="title">Nashville Furry Friends </h1>
+                <h1 className="title">Nashville Furry Friends </h1>
             </div>
             <h5>Helping foster dogs find their furever homes since 2022</h5>
             <form className="form--login" onSubmit={handleRegister}>
@@ -72,9 +75,13 @@ export const Register = (props) => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="foster">Do you currently foster dogs? </label>
-                    <input type="checkbox"
+                    <input type="checkbox" id="foster"
                         className="box"
-                        onChange={updateUser}/>
+                        onChange={(evt) => {
+                            const copy = {...user}
+                            copy.foster = evt.target.checked
+                            setUser(copy)
+                        }}/>
                 </fieldset>
                 <fieldset>
                     <label htmlFor="bio"> About me: </label>

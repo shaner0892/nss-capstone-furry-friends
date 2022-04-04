@@ -56,11 +56,11 @@ export const LandingPage = () => {
             (event) => {
                 return <section className="homeEvent" key={`event--${event.id}`}>
                     <div className="eventTitle">{event.title}</div>
+                    <div><b>Hosted by:</b> {event.rescue?.name}</div>
                     <div><b>Date:</b> {event.date}</div>
                     <div><b>Time:</b> {event.time}</div>
                     <div><b>Location:</b> {event.location}</div>
                     <div><b>About:</b> {event.description}</div>
-                    <div><b>Hosted by:</b> {event.rescue?.name}</div>
                     <br></br></section>
             }
         )

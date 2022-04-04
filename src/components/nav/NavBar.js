@@ -9,10 +9,10 @@ export const NavBar = (props) => {
         <>
             <div class="header">
                 <img className="logo" src="https://res.cloudinary.com/dfxsl6a2c/image/upload/v1647634780/Yellow_Brown_Petshop_Point_Logo_l7v1l2.png" alt="logo" />
-                <h1 class="title">Nashville Furry Friends </h1>
+                <h1 className="title">Nashville Furry Friends </h1>
             </div>
             <h5>Helping foster dogs find their furever homes since 2022</h5>
-            <div class="navBar">
+            <div className="navBar">
                 <Nav pills>
                     <NavItem class="navBar_item">
                         <NavLink href="/home">Home</NavLink>
