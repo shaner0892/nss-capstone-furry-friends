@@ -12,7 +12,7 @@ This application uses JavaScript, React, HTML, CSS, and Reactstrap. The data pre
 
 ## Wireframe
 
-View the [wireframe](https://sketchboard.me/NC9dAORdDas#/)
+View the wireframe [here](https://sketchboard.me/NC9dAORdDas#/)
 
 ## Instructions for Installing and Running this App
 
@@ -22,7 +22,7 @@ git@github.com:shaner0892/nss-capstone-furry-friends.git
 npm start
 3. Clone down the API:
 git@github.com:shaner0892/nss-capstone-furry-friends-api.git
-4. In the API directory, tart the JSON server with:
+4. In the API directory, start the JSON server with:
 json-server -p 8088 -w database.json
 5. Visit local host
 
