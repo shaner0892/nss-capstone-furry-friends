@@ -67,13 +67,11 @@ export const deleteBlogPost = (id) => {
     })
 }
 
-//Login.js
 export const getUserEmail = (email) => {
     return fetch(`http://localhost:8088/users?email=${email}`)
         .then(res => res.json())
 }
 
-//EditUserProfile.js
 export const putEditUser = (user) => {
     return fetch(`http://localhost:8088/users/${user.id}`, {
         method: "PUT",

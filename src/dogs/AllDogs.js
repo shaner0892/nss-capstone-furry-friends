@@ -11,7 +11,6 @@ export const AllDogs = ({filterDogs}) => {
             {/* //iterate dogs using map array method and convert them from objects to html using jsx
             //need to display an abbreviated bio (name, age, adoptable) 
             //need to display their picture, when user clicks on a picture they should be rerouted to their individual profile*/}
-            
             <section className="dogList">
             {
                 filterDogs.map(

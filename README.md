@@ -1,71 +1,33 @@
-# Getting Started with Create React App
+# Nashville Furry Friends
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Nashville Furry Friends is my front-end capstone project for Nashville Software School. It was created to help local foster dogs get adopted. This app streamlines the process and allows users to post about their foster dog directly rather than sending it to the rescue. Potential adopters are able to login and see all dogs from different rescues rather than visiting multiple sites. They can see upcoming events and blog posts about adoptable and alumni dogs.
 
-## Available Scripts
+## Technologies Used
 
-In the project directory, you can run:
+This application uses JavaScript, React, HTML, CSS, and Reactstrap. The data presented is served via json-server.
 
-### `npm start`
+## ERD - Entity Relationship Diagram
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![ERD Image](https://res.cloudinary.com/dfxsl6a2c/image/upload/v1649089623/Screen_Shot_2022-04-04_at_10.07.44_AM_sqn8kh.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Wireframe
 
-### `npm test`
+View the [wireframe](https://sketchboard.me/NC9dAORdDas#/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Instructions for Installing and Running this App
 
-### `npm run build`
+1. Clone down the repo:
+git@github.com:shaner0892/nss-capstone-furry-friends.git
+2. In the project directory, run:
+npm start
+3. Clone down the API:
+git@github.com:shaner0892/nss-capstone-furry-friends-api.git
+4. In the API directory, tart the JSON server with:
+json-server -p 8088 -w database.json
+5. Visit local host
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Special Thanks to
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+NSS and my Cohort 54 Instructors: Steve Brownlee, Tyler Hilliard, and Devin Kent
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# nss-capstone-furry-friends
+All of Cohort 54

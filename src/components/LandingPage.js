@@ -50,7 +50,7 @@ export const LandingPage = () => {
         []
     )
 
-    //display only ONE upcoming event with button "see more"
+    //display only TWO upcoming events with button "see more"
     const topEvents = () => {
         return events.slice(0, 2).map(
             (event) => {
@@ -94,10 +94,9 @@ export const LandingPage = () => {
 
     return (
         //add carousel
-        //add "welcome", preview of pages, fostering links
+        //add preview of pages, fostering links
         <>
             <DogCarousel />
-            {/* <h2 class="homeWelcome">Welcome!</h2> */}
             <section className="homePage">
                 <div className="row1">
                     <div className="dogSection" >
