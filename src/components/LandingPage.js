@@ -84,9 +84,6 @@ export const LandingPage = () => {
                 return <section className="homeBlogPicTitle" key={`blogPost--${post.id}`}>
                     <img className="blogPic" src={post.imageURL} />
                     <div className="subtitle">{post.title} </div>
-                    {/* <div>Author: {post.user?.firstName}</div>
-                    <div>Date: {post.date}</div>
-                    <div>{post.entryText}</div> */}
                 </section>
             }
         )
