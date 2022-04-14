@@ -1,6 +1,6 @@
 # Nashville Furry Friends
 
-Nashville Furry Friends is my front-end capstone project for Nashville Software School. It was created to help local foster dogs get adopted. This app streamlines the process and allows users to post about their foster dog directly rather than sending it to the rescue. Potential adopters are able to login and see all dogs from different rescues rather than visiting multiple sites. They can see upcoming events and blog posts about adoptable and alumni dogs.
+Nashville Furry Friends is my front-end capstone project for Nashville Software School. It was created to help local foster dogs get adopted. This app streamlines the process and allows users to post about their foster dog directly rather than sending that information to the rescue. Potential adopters are able to login and see all dogs from different rescues rather than visiting multiple sites. They can see upcoming events and blog posts about adoptable and alumni dogs.
 
 ## Technologies Used
 
