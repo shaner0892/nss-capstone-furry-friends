@@ -52,7 +52,7 @@ export const LandingPage = () => {
 
     //display only TWO upcoming events with button "see more"
     const topEvents = () => {
-        return events.slice(0, 2).map(
+        return events.slice(0, 1).map(
             (event) => {
                 return <section className="homeEvent" key={`event--${event.id}`}>
                     <div className="eventTitle">{event.title}</div>

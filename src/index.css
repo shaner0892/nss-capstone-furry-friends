@@ -28,7 +28,7 @@ h1 {
   color:rgb(240, 223, 147);
   padding: 20px;
   text-align: center;
-  font-family: 'Ohayou Christmas', script;
+  font-family: 'Ohayou Christmas', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   width: 100%;
   position: absolute;
 }
@@ -80,7 +80,7 @@ img {
 .dogProfilePic {
   margin: 15px;
   width: 30%;
-  height: fit-content;
+  height: 50%;
   display: block;
   margin-left: auto;
   margin-right: auto;
