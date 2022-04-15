@@ -7,7 +7,9 @@ import { DogList } from "../dogs/DogList"
 import { DogProfile } from "../dogs/DogProfile"
 import { EditDogProfile } from "../dogs/EditDogProfile"
 import { AddDog } from "../dogs/NewDogForm"
+import { EditEvent } from "../events/EditEventForm"
 import { EventList } from "../events/EventsList"
+import { AddEvent } from "../events/NewEventForm"
 import { EditUserProfile } from "../users/EditUserProfile"
 import { UserProfile } from "../users/UserProfile"
 import { LandingPage } from "./LandingPage"
@@ -59,6 +61,14 @@ export const ApplicationViews = () => {
 
             <Route exact path="/edit-blog-posts/:blogPostId(\d+)">
                 <EditBlogPost />
+            </Route>
+
+            <Route exact path="/add-event">
+                <AddEvent />
+            </Route>
+
+            <Route exact path="/edit-event/:eventId(\d+)">
+                <EditEvent />
             </Route>
         </>
     )

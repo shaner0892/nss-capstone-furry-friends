@@ -15,8 +15,8 @@ export const BlogPostList = () => {
     useEffect(
         () => {
             getAllBlogPosts()
-                .then((blogPostArray) => {
-                    modifyBlogPosts(blogPostArray)
+                .then((blogPostsArray) => {
+                    modifyBlogPosts(blogPostsArray)
                 })
         },
         []
@@ -52,11 +52,11 @@ export const BlogPostList = () => {
                             <div>Date: {post.date}</div>
                             <div>{post.entryText}</div>
                             {
-                                post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <Button id="btn" color="success" outline  id={post.id} onClick={() => history.push(`/edit-blog-posts/${post.id}`)}> Edit Blog Post </Button> : ""
+                                post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <Button id="btn" color="success" outline id={post.id} onClick={() => history.push(`/edit-blog-posts/${post.id}`)}> Edit Blog Post </Button> : ""
                             }
                             <br></br>
                             {
-                                post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <Button id="btn" color="success" outline  onClick={() => {removeBlogPost(post.id)}}> Delete Blog Post </Button> : ""
+                                post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <Button id="btn" color="success" outline onClick={() => {removeBlogPost(post.id)}}> Delete Blog Post </Button> : ""
                             }
                         </section>
                     }
