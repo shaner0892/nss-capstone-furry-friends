@@ -61,6 +61,11 @@ export const getCurrentBlogPost = (id) => {
         .then(res => res.json())
 }
 
+export const getCurrentEvent = (id) => {
+    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/events/${id}`)
+        .then(res => res.json())
+}
+
 export const deleteBlogPost = (id) => {
     return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/blogPosts/${id}`, {
         method: "DELETE"
@@ -99,6 +104,32 @@ export const putEditBlog = (blogPostId, editedPost) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(editedPost)
+    })
+}
+
+export const postEvent = (newEvent) => {
+    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/events", {
+        method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newEvent)
+    })
+}
+
+export const putEvent = (eventId, editedEvent) => {
+    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/events/${eventId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(editedEvent)
+    })
+}
+
+export const deleteEvent = (id) => {
+    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/events/${id}`, {
+        method: "DELETE"
     })
 }
 
