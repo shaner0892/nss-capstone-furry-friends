@@ -18,9 +18,8 @@ View the wireframe [here](https://sketchboard.me/NC9dAORdDas#/)
 
 1. Clone down the repo:
 git@github.com:shaner0892/nss-capstone-furry-friends.git
-2. In the project directory, run:
-npm install
-npm start
+2. In the project directory, run: npm install
+3. Then run: npm start
 3. Clone down the API:
 git@github.com:shaner0892/nss-capstone-furry-friends-api.git
 4. In the API directory, start the JSON server with:
