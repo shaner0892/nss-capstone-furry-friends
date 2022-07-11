@@ -1,8 +1,7 @@
 import React from "react";
-import "./NavBar.css"
 import { Nav, NavItem, NavLink } from 'reactstrap';
+import "./NavBar.css"
 
-// NavBar includes: my dogs, all dogs, events, blog posts, and logout 
 
 export const NavBar = (props) => {
     return (

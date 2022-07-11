@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Button } from "reactstrap";
 import { getUserDogs, postBlog } from "../ApiManager";
 import UploadImages from "../UploadImage";
-import { Button } from "reactstrap";
 
 export const AddBlogPost = () => {
     //use the useState hook function to set the initial value of the new object
     const [dogs, modifyDogs] = useState([])
     const history = useHistory()
 
-    //add useEffect
-    //this is watching for updates to the dogs array and fetches them from the API
     useEffect(
         () => {
             getUserDogs()
-                .then((dogsArray) => {
-                    modifyDogs(dogsArray.dogs)
-                })
+                .then(modifyDogs)
         },
         []
     )
@@ -32,7 +28,6 @@ export const AddBlogPost = () => {
     });
 
     const addNewBlogPost = (evt) => {
-        //capture the evt (event) and prevent the default (form submitted and reset) from happening
         evt.preventDefault()
         //object that we want to send to our API
         const newPost = {
@@ -47,6 +42,7 @@ export const AddBlogPost = () => {
         postBlog(newPost)
             .then(() => history.push(`/blog-posts`))
     }
+    
     //this will be the form you display, you need to capture user input and save to new object
     return (
         <form className="blogPostForm">

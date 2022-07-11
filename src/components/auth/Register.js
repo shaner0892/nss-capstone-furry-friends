@@ -1,10 +1,9 @@
 import React, { useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
-import "./Login.css"
 import { Button } from "reactstrap"
 import { getUserEmailReg, postRegistration } from "../../ApiManager"
+import "./Login.css"
 
-//this is the registration form for new users
 
 export const Register = (props) => {
     const [user, setUser] = useState({

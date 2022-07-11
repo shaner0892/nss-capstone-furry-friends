@@ -1,40 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import { deleteDog, getUserDogs } from "../ApiManager";
 import { Button } from "reactstrap";
+import { deleteDog, getUserDogs } from "../ApiManager";
 
-//this module is responsible for displaying the user's info and their dogs
 
 export const UserProfile = () => {
-    //use useState to define and update user
     const [user, modifyUser] = useState({dogs:[]})
-    //use useParams to implement a single resource view
     const { userId } = useParams()
     const history = useHistory()
     
-    //use useEffect to monitor for updates to user
-    //fetch by id (/user/id)
     //use _embed query string parameter to add dogs to user object
     useEffect(
         () => {
             getUserDogs()
-                .then((userObj) => {
-                    modifyUser(userObj)
-                })
+                .then(modifyUser)
         },
         [userId]
     )
 
-    //define a function to delete a dog from the user's profile
     //invoke the DELETE method from ApiManager and then fetch the user's new list of dogs
     const removeDog = (id) => {
         deleteDog(id)
             .then(()=> {
                 getUserDogs()
-                    .then((userObj) => {
-                        modifyUser(userObj)
-                    })
+                    .then(modifyUser)
             })
     }
 

@@ -10,31 +10,17 @@ export const EditEvent = () => {
     const history = useHistory()
     const {eventId} = useParams()
 
-    //add useEffect
-    //this is watching for updates to the rescues array and fetches them from the API
     useEffect(
         () => {
             getAllRescues()
-                .then((rescuesArray) => {
-                    modifyRescues(rescuesArray)
-                })
-        },
-        []
-    )
-
-    //useEffect to get the current event selected to edit
-    useEffect(
-        () => {
+                .then(modifyRescues)
             getCurrentEvent(parseInt(eventId))
-                .then((event) => {
-                    updateEvent(event)
-                })
+                .then(updateEvent)
         },
         []
     )
 
     const editEvent = (evt) => {
-        //capture the evt (event) and prevent the default (form submitted and reset) from happening
         evt.preventDefault()
         //object that we want to send to our API
         const editedEvent = {
@@ -49,6 +35,7 @@ export const EditEvent = () => {
         putEvent(eventId, editedEvent)
             .then(() => history.push(`/events`))
     }
+    
     //this will be the form you display, you need to capture user input and save to new object
     return (
         <form className="eventForm">
@@ -94,7 +81,7 @@ export const EditEvent = () => {
                     <label htmlFor="entryText">Date: </label>
                     <input value={event.date}
                         required autoFocus
-                        type="text"
+                        type="date"
                         className="form-control"
                         onChange={
                             (evt) => {
@@ -110,7 +97,7 @@ export const EditEvent = () => {
                     <label htmlFor="entryText">Time: </label>
                     <input value={event.time}
                         required autoFocus
-                        type="text"
+                        type="time"
                         className="form-control"
                         onChange={
                             (evt) => {

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllRescues } from "../ApiManager";
 
-//this module is responsible for displaying the rescue list
 
 export const RescueList = () => {
     //useState is a hook, it takes a single argument and returns an array
@@ -12,9 +11,7 @@ export const RescueList = () => {
     useEffect(
         () => {
             getAllRescues()
-                .then((rescueArray) => {
-                    modifyRescues(rescueArray)
-                })
+                .then(modifyRescues)
         },
         []
     )

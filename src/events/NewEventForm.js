@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { getAllRescues, postEvent } from "../ApiManager";
 import { Button } from "reactstrap";
+import { getAllRescues, postEvent } from "../ApiManager";
 
 export const AddEvent = () => {
     //use the useState hook function to set the initial value of the new object
     const [rescues, modifyRescues] = useState([])
     const history = useHistory()
 
-    //add useEffect
-    //this is watching for updates to the rescues array and fetches them from the API
     useEffect(
         () => {
             getAllRescues()
-                .then((rescuesArray) => {
-                    modifyRescues(rescuesArray)
-                })
+                .then(modifyRescues)
         },
         []
     )
@@ -31,7 +27,6 @@ export const AddEvent = () => {
     });
 
     const addNewEvent = (evt) => {
-        //capture the evt (event) and prevent the default (form submitted and reset) from happening
         evt.preventDefault()
         //object that we want to send to our API
         const newEvent = {
@@ -46,6 +41,7 @@ export const AddEvent = () => {
         postEvent(newEvent)
             .then(() => history.push(`/events`))
     }
+    
     //this will be the form you display, you need to capture user input and save to new object
     return (
         <form className="eventForm">
@@ -92,7 +88,7 @@ export const AddEvent = () => {
                     <label htmlFor="entryText">Date: </label>
                     <input
                         required autoFocus
-                        type="text"
+                        type="date"
                         className="form-control"
                         placeholder="Enter the event date here"
                         onChange={
@@ -109,7 +105,7 @@ export const AddEvent = () => {
                     <label htmlFor="entryText">Time: </label>
                     <input
                         required autoFocus
-                        type="text"
+                        type="time"
                         className="form-control"
                         placeholder="Enter the event time here"
                         onChange={
