@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import { Button } from "reactstrap"
 import { getCurrentUser, putEditUser } from "../ApiManager"
 
-//this is the edit user profile page
 
 export const EditUserProfile = (props) => {
     const [user, setUser] = useState({})
@@ -13,14 +12,13 @@ export const EditUserProfile = (props) => {
     //this function fetches the current user from local storage and invokes the setUser function to assign them to user
     const existingUserCheck = () => {
         getCurrentUser()
-            .then(user => setUser(user))
+            .then(setUser)
     }
     //use PUT method to update/edit the existing object
     useEffect(existingUserCheck, [])
     const editUser = (evt) => {
         evt.preventDefault()
         putEditUser(user)
-            //.push routes you to a new page
             .then(() => history.push(`/user-profile/${user.id}`))
     }
 

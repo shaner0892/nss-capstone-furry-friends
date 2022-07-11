@@ -27,3 +27,5 @@ export default function UploadImages({obj, update}) {
         </>
     )
 }
+
+// npm install cloudinary-core --save

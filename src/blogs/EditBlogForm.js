@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router";
+import { Button } from "reactstrap";
 import { getCurrentBlogPost, getUserDogs, putEditBlog } from "../ApiManager";
 import UploadImages from "../UploadImage";
-import { Button } from "reactstrap";
 
 export const EditBlogPost = () => {
     //use the useState hook function to set the initial value of the new object
@@ -12,31 +12,17 @@ export const EditBlogPost = () => {
     const history = useHistory()
     const {blogPostId} = useParams()
 
-    //add useEffect
-    //this is watching for updates to the dogs array and fetches them from the API
     useEffect(
         () => {
             getUserDogs()
-                .then((dogsArray) => {
-                    modifyDogs(dogsArray.dogs)
-                })
-        },
-        []
-    )
-
-    //useEffect to get the current blog post selected to edit
-    useEffect(
-        () => {
+                .then(modifyDogs)
             getCurrentBlogPost(parseInt(blogPostId))
-                .then((blogPost) => {
-                    updateBlogPost(blogPost)
-                })
+                .then(updateBlogPost)
         },
         []
     )
 
     const editBlogPost = (evt) => {
-        //capture the evt (event) and prevent the default (form submitted and reset) from happening
         evt.preventDefault()
         //object that we want to send to our API
         const editedPost = {

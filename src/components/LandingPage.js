@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getAllDogs, getAllEvents, getAllBlogPosts } from "../ApiManager";
 import { useHistory } from "react-router";
 import { Button } from "reactstrap"
+import { getAllDogs, getAllEvents, getAllBlogPosts } from "../ApiManager";
 import { DogCarousel } from "./Carousel";
 import "./LandingPage.css"
 
@@ -12,13 +12,14 @@ export const LandingPage = () => {
     const [blogPosts, modifyBlogPosts] = useState([])
     const history = useHistory()
 
-    //get all the dog info from the Api and update when it changes
     useEffect(
         () => {
             getAllDogs()
-                .then((dogArray) => {
-                    modifyDogs(dogArray)
-                })
+                .then(modifyDogs)
+            getAllEvents()
+                .then(modifyEvents)
+            getAllBlogPosts()
+                .then(modifyBlogPosts)
         },
         []
     )
@@ -39,17 +40,6 @@ export const LandingPage = () => {
         )
     }
 
-    //get all the event info from the Api and update when it changes
-    useEffect(
-        () => {
-            getAllEvents()
-                .then((eventArray) => {
-                    modifyEvents(eventArray)
-                })
-        },
-        []
-    )
-
     //display only TWO upcoming events with button "see more"
     const topEvents = () => {
         return events.slice(0, 1).map(
@@ -66,17 +56,6 @@ export const LandingPage = () => {
         )
     }
 
-    //get all the blogPost info from the Api and update when it changes
-    useEffect(
-        () => {
-            getAllBlogPosts()
-                .then((blogPostArray) => {
-                    modifyBlogPosts(blogPostArray)
-                })
-        },
-        []
-    )
-
     //display only THREE recent dog blog posts with button "see more"
     const topPosts = () => {
         return blogPosts.slice(0, 3).map(
@@ -90,8 +69,7 @@ export const LandingPage = () => {
     }
 
     return (
-        //add carousel
-        //add preview of pages, fostering links
+        //add carousel, preview of pages, fostering links
         <>
             <DogCarousel />
             <section className="homePage">

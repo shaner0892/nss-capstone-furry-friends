@@ -1,36 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { deleteEvent, getAllEvents } from "../ApiManager";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Button } from "reactstrap";
+import { deleteEvent, getAllEvents } from "../ApiManager";
 import ".//Events.css"
 
-//this module is responsible for displaying all of the events
 
 export const EventList = () => {
     //useState is a hook, it takes a single argument and returns an array
     const [events, modifyEvents] = useState([])
     const history = useHistory()
 
-    //get all the event info from the Api and update when it changes
     useEffect(
         () => {
             getAllEvents()
-                .then((eventsArray) => {
-                    modifyEvents(eventsArray)
-                })
+                .then(modifyEvents)
         },
         []
     )
 
-    //define a function to delete an event
     //invoke the DELETE method from ApiManager and then fetch the new list of events
     const removeEvent = (id) => {
         deleteEvent(id)
             .then(()=> {
                 getAllEvents()
-                    .then((eventArray) => {
-                        modifyEvents(eventArray)
-                    })
+                    .then(modifyEvents)
             })
     }
     

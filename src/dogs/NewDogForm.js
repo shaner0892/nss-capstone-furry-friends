@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Button } from "reactstrap";
 import { getAllAgeRanges, getAllRescues, getAllSizes, getCurrentUser, postDog } from "../ApiManager";
 import UploadImages from "../UploadImage";
-import { Button } from "reactstrap";
 
 export const AddDog = () => {
     //use the useState hook function to set the initial value of the new object
@@ -15,46 +15,22 @@ export const AddDog = () => {
     //this function fetches the current user from local storage and invokes the setUser function to update the user object
     const currentUser = () => {
         getCurrentUser()
-            .then(user => setUser(user))
+            .then(setUser)
     }
 
     useEffect(
         () => {
             currentUser()
+            getAllRescues()
+                .then(modifyRescues)
+            getAllSizes()
+                .then(modifySizes)
+            getAllAgeRanges()
+                .then(modifyAgeRange)
         },
         []
     )
 
-    //add useEffect
-    //this is watching for updates to the rescues and sizes array and fetches them from the API, it updates locations to = the locations array from the API
-    useEffect(
-        () => {
-            getAllRescues()
-                .then((rescuesArray) => {
-                    modifyRescues(rescuesArray)
-                })
-        },
-        []
-    )
-    useEffect(
-        () => {
-            getAllSizes()
-                .then((sizesArray) => {
-                    modifySizes(sizesArray)
-                })
-        },
-        []
-    )
-    useEffect(
-        () => {
-            getAllAgeRanges()
-                .then((agesArray) => {
-                    modifyAgeRange(agesArray)
-                })
-        },
-        []
-    )
-    //useState hook function sets the initial value of dog to the defined properties, updateDog is a function you invoke later on to modify the values
     const [dog, updateDog] = useState({
         name: "",
         ageId: 0,
@@ -71,7 +47,6 @@ export const AddDog = () => {
     });
 
     const addNewDog = (evt) => {
-        //capture the evt (event) and prevent the default (form submitted and reset) from happening
         evt.preventDefault()
         //object that we want to send to our API
         const newDog = {
@@ -92,6 +67,7 @@ export const AddDog = () => {
         postDog(newDog)
             .then(() => history.push(`/user-profile/${user.id}`))
     }
+
     //this will be the form you display, you need to capture user input and save to new object
     return (
         <form className="dogForm">

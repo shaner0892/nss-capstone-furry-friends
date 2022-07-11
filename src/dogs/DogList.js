@@ -3,7 +3,6 @@ import { getAllDogs, getAllRescues, getAllSizes, getAllAgeRanges } from "../ApiM
 import { AllDogs } from "./AllDogs";
 import "./ToggleBar.css"
 
-//this module is responsible for displaying and filtering all of the dogs
 
 export const DogList = () => {
     //useState is a hook, it takes a single argument and returns an array
@@ -24,33 +23,12 @@ export const DogList = () => {
                     let copy = [...dogArray]
                     modifyFilterDogs(copy)
                 })
-        },
-        []
-    )
-    useEffect(
-        () => {
             getAllRescues()
-                .then((rescuesArray) => {
-                    modifyRescues(rescuesArray)
-                })
-        },
-        []
-    )
-    useEffect(
-        () => {
+                .then(modifyRescues)
             getAllSizes()
-                .then((sizesArray) => {
-                    modifySizes(sizesArray)
-                })
-        },
-        []
-    )
-    useEffect(
-        () => {
+                .then(modifySizes)
             getAllAgeRanges()
-                .then((agesArray) => {
-                    modifyAgeRange(agesArray)
-                })
+                .then(modifyAgeRange)
         },
         []
     )

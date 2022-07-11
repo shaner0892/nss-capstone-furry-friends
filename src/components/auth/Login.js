@@ -1,11 +1,10 @@
 import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
-import "./Login.css"
 import { Button } from "reactstrap";
 import { getUserEmail } from "../../ApiManager";
+import "./Login.css"
 
-//this is the login page for users
 
 export const Login = () => {
     const [email, set] = useState("")

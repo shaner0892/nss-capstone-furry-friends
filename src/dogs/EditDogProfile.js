@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Button } from "reactstrap";
 import { getAllAgeRanges, getAllRescues, getAllSizes, getCurrentDog, putEditDog } from "../ApiManager";
 import UploadImages from "../UploadImage";
-import { Button } from "reactstrap";
 
 export const EditDogProfile = () => {
     //use the useState hook function to set the initial value of the new object
@@ -14,48 +14,21 @@ export const EditDogProfile = () => {
     const [dog, updateDog] = useState({});
     const {dogId} = useParams()
 
-    //add useEffect
-    //this is watching for updates to the rescues and sizes array and fetches them from the API, it updates locations to = the locations array from the API
     useEffect(
         () => {
             getAllRescues()
-                .then((rescuesArray) => {
-                    modifyRescues(rescuesArray)
-                })
-        },
-        []
-    )
-    useEffect(
-        () => {
+                .then(modifyRescues)
             getAllSizes()
-                .then((sizesArray) => {
-                    modifySizes(sizesArray)
-                })
-        },
-        []
-    )
-    useEffect(
-        () => {
+                .then(modifySizes)
             getAllAgeRanges()
-                .then((agesArray) => {
-                    modifyAgeRange(agesArray)
-                })
-        },
-        []
-    )
-    //useEffect to get the current dog selected to edit
-    useEffect(
-        () => {
+                .then(modifyAgeRange)
             getCurrentDog(parseInt(dogId))
-                .then((dog) => {
-                    updateDog(dog)
-                })
+                .then(updateDog)
         },
         []
     )
 
     const editDog = (evt) => {
-        //capture the evt (event) and prevent the default (form submitted and reset) from happening
         evt.preventDefault()
         //object that we want to send to our API
         const editedDog = {
@@ -76,6 +49,7 @@ export const EditDogProfile = () => {
         putEditDog(dog, editedDog)
             .then(() => history.push(`/dog-profile/${dog.id}`))
     }
+    
     //this will be the form you display, you need to capture user input and update the dog object
         //add values to each input to display previous user edits
     return (
@@ -120,7 +94,7 @@ export const EditDogProfile = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="age">Age Range: </label>
-                    <select name="age" className="form-control" value={dog.ageId}                        onChange={
+                    <select name="age" className="form-control" value={dog.ageId} onChange={
                             (evt) => {
                                 const copy = {...dog}
                                 copy.ageId = parseInt(evt.target.value)

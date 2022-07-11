@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
 
-//this module is responsible for displaying all of the dogs
 
 export const AllDogs = ({filterDogs}) => {
     const history = useHistory()

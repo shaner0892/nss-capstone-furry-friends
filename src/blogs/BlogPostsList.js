@@ -1,36 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { deleteBlogPost, getAllBlogPosts } from "../ApiManager";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Button } from "reactstrap";
+import { deleteBlogPost, getAllBlogPosts } from "../ApiManager";
 import "./BlogPosts.css"
-
-//this module is responsible for displaying all of the blog posts
 
 export const BlogPostList = () => {
     //useState is a hook, it takes a single argument and returns an array
     const [blogPosts, modifyBlogPosts] = useState([])
     const history = useHistory()
 
-    //get all the blogPost info from the Api and update when it changes
     useEffect(
         () => {
             getAllBlogPosts()
-                .then((blogPostsArray) => {
-                    modifyBlogPosts(blogPostsArray)
-                })
+                .then(modifyBlogPosts)
         },
         []
     )
 
-    //define a function to delete a blog post
     //invoke the DELETE method from ApiManager and then fetch the new list of posts
     const removeBlogPost = (id) => {
         deleteBlogPost(id)
             .then(()=> {
                 getAllBlogPosts()
-                    .then((blogPostsArray) => {
-                        modifyBlogPosts(blogPostsArray)
-                    })
+                    .then(modifyBlogPosts)
             })
     }
 
@@ -51,8 +43,9 @@ export const BlogPostList = () => {
                             <div>Author: {post.user?.firstName}</div>
                             <div>Date: {post.date}</div>
                             <div>{post.entryText}</div>
+                            {/* took  id={post.id} out of edit button below */}
                             {
-                                post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <Button id="btn" color="success" outline id={post.id} onClick={() => history.push(`/edit-blog-posts/${post.id}`)}> Edit Blog Post </Button> : ""
+                                post.user?.id===parseInt(localStorage.getItem("furry_user")) ? <Button id="btn" color="success" outline onClick={() => history.push(`/edit-blog-posts/${post.id}`)}> Edit Blog Post </Button> : ""
                             }
                             <br></br>
                             {
