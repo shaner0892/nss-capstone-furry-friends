@@ -12,7 +12,9 @@ export const AddBlogPost = () => {
     useEffect(
         () => {
             getUserDogs()
-                .then(modifyDogs)
+                .then((dogsArray) => {
+                    modifyDogs(dogsArray.dogs)
+                })
         },
         []
     )
@@ -43,7 +45,6 @@ export const AddBlogPost = () => {
             .then(() => history.push(`/blog-posts`))
     }
     
-    //this will be the form you display, you need to capture user input and save to new object
     return (
         <form className="blogPostForm">
             <h2 className="blogPostForm__title">New Dog Blog Post</h2>
