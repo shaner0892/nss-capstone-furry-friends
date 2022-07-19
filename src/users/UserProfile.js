@@ -34,6 +34,7 @@ export const UserProfile = () => {
             {/* display add new dog button that pushes to NewDogForm*/}
             <h2>{user.firstName}'s Page</h2>
             <section className="userProfile">
+                <img className="userPic" src={user.imageURL}/>
                 <div><b>Name:</b> {user.firstName} {user.lastName}</div>
                 <div><b>Email:</b> {user.email}</div>
                 <div><b>Current foster:</b> {user.foster? "Yes" : "No"}</div>

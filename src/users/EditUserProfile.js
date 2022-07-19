@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { Button } from "reactstrap"
 import { getCurrentUser, putEditUser } from "../ApiManager"
+import UploadImages from "../UploadImage"
 
 
 export const EditUserProfile = (props) => {
@@ -65,6 +66,12 @@ export const EditUserProfile = (props) => {
                 <fieldset>
                     <label htmlFor="bio"> About me: </label>
                     <textarea id="bio" value={user.bio} cols="40" rows="5" onChange={updateUser} type="text" className="form-control" ></textarea>
+                </fieldset>
+                <fieldset>
+                <div className="form-group">
+                    <img className="userPic" src={user.imageURL}/><br></br>
+                    <UploadImages obj={user} update={setUser} />
+                </div>
                 </fieldset>
                 <fieldset>
                     <Button id="btn" color="success" outline type="submit"> Save </Button>
