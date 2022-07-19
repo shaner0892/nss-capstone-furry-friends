@@ -8,7 +8,8 @@ import "./Login.css"
 export const Register = (props) => {
     const [user, setUser] = useState({
         foster: false,
-        bio: ""
+        bio: "",
+        imageURL: "https://thumbs.dreamstime.com/b/female-dog-walker-sitter-walking-group-pets-silhouette-vector-female-dog-walker-sitter-walking-group-pets-124154396.jpg"
     })
     const conflictDialog = useRef()
     const history = useHistory()

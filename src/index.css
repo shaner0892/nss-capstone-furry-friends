@@ -90,6 +90,11 @@ img {
   text-align: center;
 }
 
+.userPic {
+  width: 30%;
+  height: 50%
+}
+
 #btn {
   margin: 10px;
   position: relative;
