@@ -91,7 +91,7 @@ img {
 }
 
 .userPic {
-  width: 30%;
+  width: 20%;
   height: 50%
 }
 
@@ -149,3 +149,23 @@ img {
 a:link {
   text-decoration: none;
 } 
+
+.userForm {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.picInput {
+  width: 40%;
+}
+
+.textInput {
+  width:40%;
+}
+
+.userEditPic {
+  width: 50%;
+  height: 80%;
+  padding: 10px
+}
