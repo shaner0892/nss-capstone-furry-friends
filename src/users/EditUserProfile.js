@@ -38,45 +38,45 @@ export const EditUserProfile = (props) => {
                 <div>Account with that email address already exists</div>
                 <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
             </dialog>
-            <form className="form--login" onSubmit={editUser}>
-                <h2 className="h3 mb-3 font-weight-normal">Edit Your Profile</h2>
-                <fieldset>
-                    <label htmlFor="firstName"> First Name: </label>
-                    <input id="firstName" value={user.firstName} onChange={updateUser} type="text" className="form-control" required autoFocus />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="lastName"> Last Name: </label>
-                    <input id="lastName" value={user.lastName} onChange={updateUser} type="text" className="form-control" required autoFocus />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="email"> Email address: </label>
-                    <input id="email" value={user.email} onChange={updateUser} type="email" className="form-control" required />
-                </fieldset>
-                <fieldset>
-                    {/* a value is being passed into updateUser whereas this one is checked or not, write a separate function in the onChange */}
-                    <label htmlFor="foster">Do you currently foster dogs? </label>
-                    <input id="foster" checked={user.foster ? "checked" : ""} type="checkbox" className="box" onChange={
+            <h2 className="h3 mb-3 font-weight-normal">Edit Your Profile</h2>
+            <form className="userForm" onSubmit={editUser}>
+                <div className="picInput">
+                    <img className="userEditPic" src={user.imageURL}/><br></br>
+                    <UploadImages obj={user} update={setUser} />
+                </div>
+                <div className="textInput">
+                    <fieldset className="form-group">
+                        <label htmlFor="firstName"> First Name: </label>
+                        <input id="firstName" value={user.firstName} onChange={updateUser} type="text" className="form-control" required autoFocus />
+                    </fieldset>
+                    <fieldset className="form-group">
+                        <label htmlFor="lastName"> Last Name: </label>
+                        <input id="lastName" value={user.lastName} onChange={updateUser} type="text" className="form-control" required autoFocus />
+                    </fieldset>
+                    <fieldset className="form-group">
+                        <label htmlFor="email"> Email address: </label>
+                        <input id="email" value={user.email} onChange={updateUser} type="email" className="form-control" required />
+                    </fieldset>
+                    <fieldset className="form-group">
+                        {/* a value is being passed into updateUser whereas this one is checked or not, write a separate function in the onChange */}
+                        <label htmlFor="foster">Do you currently foster dogs? </label>
+                        <input id="foster" checked={user.foster ? "checked" : ""} type="checkbox" className="box" onChange={
                             (evt) => {
                                 const copy = {...user}
                                 copy.foster = evt.target.checked
                                 setUser(copy)
                             }
                         } />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="bio"> About me: </label>
-                    <textarea id="bio" value={user.bio} cols="40" rows="5" onChange={updateUser} type="text" className="form-control" ></textarea>
-                </fieldset>
-                <fieldset>
-                <div className="form-group">
-                    <img className="userPic" src={user.imageURL}/><br></br>
-                    <UploadImages obj={user} update={setUser} />
+                    </fieldset>
+                    <fieldset className="form-group">
+                        <label htmlFor="bio"> About me: </label>
+                        <textarea id="bio" value={user.bio} cols="40" rows="5" onChange={updateUser} type="text" className="form-control" ></textarea>
+                    </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                    <Button id="btn" color="success" outline type="submit"> Save </Button>
-                </fieldset>
             </form>
+            <div className="form-buttons">
+                <Button id="btn" color="success" outline type="submit"> Save </Button>
+            </div>
         </main>
     )
 }
