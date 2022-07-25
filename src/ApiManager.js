@@ -1,84 +1,84 @@
-//this module is responsible for fetching data from the API
+const API = 'https://furry-friends-api-33qtl.ondigitalocean.app'
 
 export const getAllUsers = () => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/users")
+    return fetch(`${API}/users`)
         .then(res => res.json())
 }
 
 export const getCurrentUser = () => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/users/${parseInt(localStorage.getItem("furry_user"))}`)
+    return fetch(`${API}/users/${parseInt(localStorage.getItem("furry_user"))}`)
         .then(res => res.json())
 }
 
 export const getAllDogs = () => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/dogs?_expand=user&_expand=rescue&_expand=size&_expand=age")
+    return fetch(`${API}/dogs?_expand=user&_expand=rescue&_expand=size&_expand=age`)
         .then(res => res.json())
 }
 
 export const getAllRescues = () => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/rescues")
+    return fetch(`${API}/rescues`)
         .then(res => res.json())
 }
 
 export const getAllSizes = () => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/sizes")
+    return fetch(`${API}/sizes`)
         .then(res => res.json())
 }
 
 export const getAllAgeRanges = () => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/ages")
+    return fetch(`${API}/ages`)
         .then(res => res.json())
 }
 
 export const getAllEvents = () => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/events?_expand=rescue")
+    return fetch(`${API}/events?_expand=rescue`)
         .then(res => res.json())
 }
 
 export const getAllBlogPosts = () => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/blogPosts?_expand=user&_expand=dog")
+    return fetch(`${API}/blogPosts?_expand=user&_expand=dog`)
         .then(res => res.json())
 }
 
 export const getUserDogs = () => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/users/${parseInt(localStorage.getItem("furry_user"))}?_embed=dogs`)
+    return fetch(`${API}/users/${parseInt(localStorage.getItem("furry_user"))}?_embed=dogs`)
         .then(res => res.json())
 }
 
 export const deleteDog = (id) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/dogs/${id}`, {
+    return fetch(`${API}/dogs/${id}`, {
         method: "DELETE"
     })
 }
 
 export const getCurrentDog = (id) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/dogs/${id}?_expand=user&_expand=rescue&_expand=size&_expand=age`)
+    return fetch(`${API}/dogs/${id}?_expand=user&_expand=rescue&_expand=size&_expand=age`)
         .then(res => res.json())
 }
 
 export const getCurrentBlogPost = (id) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/blogPosts/${id}`)
+    return fetch(`${API}/blogPosts/${id}`)
         .then(res => res.json())
 }
 
 export const getCurrentEvent = (id) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/events/${id}`)
+    return fetch(`${API}/events/${id}`)
         .then(res => res.json())
 }
 
 export const deleteBlogPost = (id) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/blogPosts/${id}`, {
+    return fetch(`${API}/blogPosts/${id}`, {
         method: "DELETE"
     })
 }
 
 export const getUserEmail = (email) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/users?email=${email}`)
+    return fetch(`${API}/users?email=${email}`)
         .then(res => res.json())
 }
 
 export const putEditUser = (user) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/users/${user.id}`, {
+    return fetch(`${API}/users/${user.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -88,7 +88,7 @@ export const putEditUser = (user) => {
 }
 
 export const postBlog = (newPost) => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/blogPosts?_expand=user&_expand=dog", {
+    return fetch(`${API}/blogPosts?_expand=user&_expand=dog`, {
         method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -98,7 +98,7 @@ export const postBlog = (newPost) => {
 }
 
 export const putEditBlog = (blogPostId, editedPost) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/blogPosts/${blogPostId}`, {
+    return fetch(`${API}/blogPosts/${blogPostId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -108,7 +108,7 @@ export const putEditBlog = (blogPostId, editedPost) => {
 }
 
 export const postEvent = (newEvent) => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/events", {
+    return fetch(`${API}/events`, {
         method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -118,7 +118,7 @@ export const postEvent = (newEvent) => {
 }
 
 export const putEvent = (eventId, editedEvent) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/events/${eventId}`, {
+    return fetch(`${API}/events/${eventId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -128,13 +128,13 @@ export const putEvent = (eventId, editedEvent) => {
 }
 
 export const deleteEvent = (id) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/events/${id}`, {
+    return fetch(`${API}/events/${id}`, {
         method: "DELETE"
     })
 }
 
 export const postDog = (newDog) => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/dogs?_expand=user&_expand=rescue&_expand=size", {
+    return fetch(`${API}/dogs?_expand=user&_expand=rescue&_expand=size`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -144,7 +144,7 @@ export const postDog = (newDog) => {
 }
 
 export const putEditDog = (dog, editedDog) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/dogs/${dog.id}`, {
+    return fetch(`${API}/dogs/${dog.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -154,7 +154,7 @@ export const putEditDog = (dog, editedDog) => {
 }
 
 export const postRegistration = (user) => {
-    return fetch("https://furry-friends-api-33qtl.ondigitalocean.app/users", {
+    return fetch(`${API}/users`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -165,6 +165,6 @@ export const postRegistration = (user) => {
 }
 
 export const getUserEmailReg = (user) => {
-    return fetch(`https://furry-friends-api-33qtl.ondigitalocean.app/users?email=${user.email}`)
+    return fetch(`${API}/users?email=${user.email}`)
         .then(res => res.json())
 }
